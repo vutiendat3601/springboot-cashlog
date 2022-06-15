@@ -26,10 +26,13 @@ public class UserEntity implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column(nullable = false, length = 30)
+    @Column
     private String email;
 
-    @Column(nullable = false, length = 30)
+    @Column
+    private String phone;
+
+    @Column
     private String encryptedPassword;
 
     @Column

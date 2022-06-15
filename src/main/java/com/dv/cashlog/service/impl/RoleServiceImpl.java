@@ -53,7 +53,7 @@ public class RoleServiceImpl implements RoleService {
     public List<RoleDto> getRoles(int page, int limit) {
         List<RoleDto> rolesDtoResp = new ArrayList<>();
 
-        page = page > 0 ? page - 1 : page;
+        page = page > 0 ? page - 1 : 0;
 
         Pageable pageableReq = PageRequest.of(page, limit);
 
@@ -77,6 +77,8 @@ public class RoleServiceImpl implements RoleService {
         }
         ModelMapper modelMapper = new ModelMapper();
         RoleEntity roleEntityReq = modelMapper.map(roleReq, RoleEntity.class);
+        // add some properties from roleExistenceChecking to new RoleEntity if different
+
         RoleEntity roleEntityResp = roleRepository.save(roleEntityReq);
         RoleDto roleDtoResp = modelMapper.map(roleEntityResp, RoleDto.class);
         return roleDtoResp;

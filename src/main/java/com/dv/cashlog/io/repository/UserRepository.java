@@ -6,4 +6,5 @@ import com.dv.cashlog.io.entity.UserEntity;
 
 public interface UserRepository extends JpaRepository<UserEntity, Long> {
     UserEntity findByUserCode(String userCode);
+    UserEntity findByEmail(String email);
 }

@@ -1,12 +1,12 @@
-package com.dv.cashlog.api.response;
+package com.dv.cashlog.common.dto;
 
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleResponseModel {
-    private long id;
+public class MajorDto {
+    private Long id;
     private String name;
     private String description;
 }

@@ -8,15 +8,14 @@ import lombok.Setter;
 @Getter
 @Setter
 public class UserDto {
-    private Long id; //
     private String email;
     private String phone;
     private String password;
-    private String encryptedPasssword; //
-    private Boolean verifedEmail; //
     private String fullName;
-    private LocalDate birhtday;
+    private LocalDate birthday;
     private String userCode;
-    private Long roleId;
+    private Long id; //
+    private String encryptedPassword; //
+    private Boolean verifedEmail; //
     private RoleDto role; //
 }

@@ -1,4 +1,4 @@
-package com.dv.cashlog.api.response;
+package com.dv.cashlog.api.request;
 
 import java.time.LocalDate;
 
@@ -7,12 +7,10 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class UserResponseModel {
-    private long id;
-    private String email;
+public class UserUpdateRequestModel {
     private String phone;
+    private String password;
     private String fullName;
-    private String userCode;
     private LocalDate birthday;
     private Long roleId;
 }

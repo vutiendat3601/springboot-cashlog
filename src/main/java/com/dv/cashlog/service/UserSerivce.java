@@ -1,9 +1,18 @@
 package com.dv.cashlog.service;
 
+import java.util.List;
+
+import com.dv.cashlog.common.dto.UserDto;
+
 public interface UserSerivce {
 
-    String createUser();
+    UserDto createUser(UserDto userReq);
 
-    String getUser(String userCode);
-    
+    UserDto getUser(String userCode);
+
+    UserDto updateUser(UserDto userReq);
+
+    List<UserDto> getUsers(int page, int limit);
+
+    boolean deleteUser(String userCode);
 }

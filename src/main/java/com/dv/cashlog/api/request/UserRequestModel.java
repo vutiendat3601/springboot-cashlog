@@ -14,5 +14,5 @@ public class UserRequestModel {
     private String fullName;
     private String userCode;
     private LocalDate birthday;
-    private Long roleId;
+    private long roleId;
 }
