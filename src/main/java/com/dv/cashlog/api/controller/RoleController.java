@@ -1,5 +1,8 @@
 package com.dv.cashlog.api.controller;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -9,6 +12,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.dv.cashlog.api.request.RoleRequestModel;
@@ -40,6 +44,21 @@ public class RoleController {
         RoleDto roleDtoResp = roleService.getRole(id);
         RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
         return roleResp;
+    }
+
+    @GetMapping("/get/all")
+    public List<RoleResponseModel> getRoles(
+            @RequestParam(value = "page", defaultValue = "0") int page,
+            @RequestParam(value = "limit", defaultValue = "5") int limit) {
+        List<RoleResponseModel> rolesResp = new ArrayList<>();
+        List<RoleDto> rolesDtoResp = roleService.getRoles(page, limit);
+
+        ModelMapper modelMapper = new ModelMapper();
+        for (RoleDto role : rolesDtoResp) {
+            RoleResponseModel roleResp = modelMapper.map(role, RoleResponseModel.class);
+            rolesResp.add(roleResp);
+        }
+        return rolesResp;
     }
 
     @PutMapping("/update/{id}")
