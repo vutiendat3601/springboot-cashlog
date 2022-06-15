@@ -1,0 +1,11 @@
+spring:
+  datasource:
+    username: postgres
+    password: postgres@12
+    url: jdbc:postgresql://richardvu.com:5432/cashlog
+  jpa:
+    hibernate:
+      ddl-auto: update
+server:
+  servlet:
+    context-path: /cashlog
