@@ -5,7 +5,6 @@ import java.time.LocalDate;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -26,25 +25,18 @@ public class UserEntity implements Serializable {
     @GeneratedValue
     private Long id;
 
-    @Column
     private String email;
 
-    @Column
     private String phone;
 
-    @Column
     private String encryptedPassword;
 
-    @Column
     private Boolean verifiedEmail;
 
-    @Column
     private String fullName;
 
-    @Column
     private LocalDate birthDay;
 
-    @Column
     private String userCode;
 
     @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)

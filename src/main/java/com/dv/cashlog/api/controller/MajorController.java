@@ -5,9 +5,11 @@ import java.util.List;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -59,5 +61,21 @@ public class MajorController {
         }
 
         return majorsResp;
+    }
+
+    @PutMapping("/update/{id}")
+    public MajorResponseModel updateMajor(@PathVariable long id,
+            @RequestBody MajorRequestModel majorReq) {
+        ModelMapper modelMapper = new ModelMapper();
+        MajorDto majorDtoReq = modelMapper.map(majorReq, MajorDto.class);
+        majorDtoReq.setId(id);
+        MajorDto majorDtoResp = majorService.updateMajor(majorDtoReq);
+        MajorResponseModel majorResp = modelMapper.map(majorDtoResp, MajorResponseModel.class);
+        return majorResp;
+    }
+
+    @DeleteMapping("/delete/{id}")
+    public boolean deleteMajor(@PathVariable long id) {
+        return majorService.deleteMajor(id);
     }
 }

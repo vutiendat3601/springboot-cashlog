@@ -11,7 +11,6 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.stereotype.Service;
 
 import com.dv.cashlog.common.dto.UserDto;
-import com.dv.cashlog.io.entity.RoleEntity;
 import com.dv.cashlog.io.entity.UserEntity;
 import com.dv.cashlog.io.repository.UserRepository;
 import com.dv.cashlog.service.UserSerivce;
@@ -26,7 +25,7 @@ public class UserSerivceImpl implements UserSerivce {
     public UserDto createUser(UserDto userReq) {
         UserEntity userExistenceChecking = userRepository.findByEmail(userReq.getEmail());
         if (userExistenceChecking != null) {
-            throw new RuntimeException("Email was taken!!!");
+            
         }
 
         ModelMapper modelMapper = new ModelMapper();

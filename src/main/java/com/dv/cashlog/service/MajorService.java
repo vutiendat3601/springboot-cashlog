@@ -12,4 +12,7 @@ public interface MajorService {
 
     List<MajorDto> getMajors(int page, int limit);
     
+    MajorDto updateMajor(MajorDto majorReq);
+
+    boolean deleteMajor(long id);
 }

@@ -1,11 +1,15 @@
 spring:
   datasource:
-    username: postgres
-    password: postgres@12
-    url: jdbc:postgresql://richardvu.com:5432/cashlog
+    username: root
+    password: 123456a@
+    url: jdbc:mysql://127.0.0.1:3306/cashlog
   jpa:
+    show-sql: true
     hibernate:
       ddl-auto: update
 server:
   servlet:
     context-path: /cashlog
+logging:
+  file:
+    name: app.log

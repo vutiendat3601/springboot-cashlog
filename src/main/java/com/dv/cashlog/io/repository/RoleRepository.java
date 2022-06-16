@@ -7,5 +7,6 @@ import com.dv.cashlog.io.entity.RoleEntity;
 
 @Repository
 public interface RoleRepository extends JpaRepository<RoleEntity, Long> {
+
     RoleEntity findByName(String name);
 }

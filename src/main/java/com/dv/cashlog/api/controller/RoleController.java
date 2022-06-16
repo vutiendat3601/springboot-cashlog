@@ -3,8 +3,11 @@ package com.dv.cashlog.api.controller;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -14,27 +17,44 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.request.RoleRequestModel;
+import com.dv.cashlog.api.response.Notification;
 import com.dv.cashlog.api.response.RoleResponseModel;
 import com.dv.cashlog.common.dto.RoleDto;
 import com.dv.cashlog.service.RoleService;
 
+import lombok.extern.slf4j.Slf4j;
+
+@Slf4j
 @RestController
 @RequestMapping("/v1/role")
 public class RoleController {
+    private ModelMapper modelMapper = new ModelMapper();
 
     @Autowired
     private RoleService roleService;
 
     @PostMapping("/create")
-    public RoleResponseModel createRole(@RequestBody RoleRequestModel roleReq) {
-        ModelMapper modelMapper = new ModelMapper();
+    public RoleResponseModel createRole(@RequestBody @Validated RoleRequestModel roleReq, HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
         RoleDto roleDtoReq = modelMapper.map(roleReq, RoleDto.class);
-
-        RoleDto roleDtoResp = roleService.createRole(roleDtoReq);
+        RoleDto roleDtoResp = roleService.createRole(roleDtoReq, req);
         RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
         return roleResp;
+    }
+
+    @PostMapping("/import-from-excel")
+    public List<RoleResponseModel> importFromExcel(
+            @RequestParam("Source-File") List<MultipartFile> files) {
+        List<RoleDto> roleDtoResp = roleService.importFromExcel(files);
+        List<RoleResponseModel> rolesResp = new ArrayList<>();
+        roleDtoResp.forEach(o -> {
+            RoleResponseModel roleResp = modelMapper.map(o, RoleResponseModel.class);
+            rolesResp.add(roleResp);
+        });
+        return rolesResp;
     }
 
     @GetMapping("/get/{id}")
@@ -74,9 +94,8 @@ public class RoleController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public boolean deleteRole(@PathVariable long id) {
-        boolean res = roleService.deleteRole(id);
-        return res;
+    public Notification deleteRole(@PathVariable long id) {
+        return roleService.deleteRole(id);
     }
 
 }

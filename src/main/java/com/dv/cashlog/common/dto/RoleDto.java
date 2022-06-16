@@ -1,31 +1,26 @@
 package com.dv.cashlog.common.dto;
 
+import java.time.LocalDateTime;
+
+import lombok.Getter;
+import lombok.Setter;
+
+@Getter
+@Setter
 public class RoleDto {
     private Long id;
+
     private String name;
+
     private String description;
 
-    public Long getId() {
-        return id;
-    }
+    private LocalDateTime createdDate;
 
-    public void setId(Long id) {
-        this.id = id;
-    }
+    private LocalDateTime updatedDate;
 
-    public String getName() {
-        return name;
-    }
+    private String createdBy;
 
-    public void setName(String name) {
-        this.name = name;
-    }
+    private String updatedBy;
 
-    public String getDescription() {
-        return description;
-    }
-
-    public void setDescription(String description) {
-        this.description = description;
-    }
+    private Boolean isDeleted;
 }

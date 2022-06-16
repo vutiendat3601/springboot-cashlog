@@ -69,4 +69,29 @@ public class MajorServiceImpl implements MajorService {
         return majorsDtoResp;
     }
 
+    @Override
+    public MajorDto updateMajor(MajorDto majorReq) {
+        Optional<MajorEntity> majorExistenceChecking = majorRepository.findById(majorReq.getId());
+        if (!majorExistenceChecking.isPresent()) {
+            throw new RuntimeException("No major was found!!!");
+        }
+
+        ModelMapper modelMapper = new ModelMapper();
+
+        MajorEntity majorEntityReq = modelMapper.map(majorReq, MajorEntity.class);
+        MajorEntity majorEntityResp = majorRepository.save(majorEntityReq);
+        MajorDto majorDtoResp = modelMapper.map(majorEntityResp, MajorDto.class);
+        return majorDtoResp;
+    }
+
+    @Override
+    public boolean deleteMajor(long id) {
+        Optional<MajorEntity> userEntityResp = majorRepository.findById(id);
+        if (!userEntityResp.isPresent()) {
+            throw new RuntimeException("Major was not found!!!");
+        }
+        majorRepository.delete(userEntityResp.get());
+        return true;
+    }
+
 }

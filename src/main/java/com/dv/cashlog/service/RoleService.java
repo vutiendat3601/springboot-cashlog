@@ -2,10 +2,15 @@ package com.dv.cashlog.service;
 
 import java.util.List;
 
+import javax.servlet.http.HttpServletRequest;
+
+import org.springframework.web.multipart.MultipartFile;
+
+import com.dv.cashlog.api.response.Notification;
 import com.dv.cashlog.common.dto.RoleDto;
 
 public interface RoleService {
-    RoleDto createRole(RoleDto roleReq);
+    RoleDto createRole(RoleDto roleReq, HttpServletRequest req);
 
     RoleDto getRole(long id);
 
@@ -13,6 +18,8 @@ public interface RoleService {
 
     RoleDto updateRole(RoleDto roleReq);
 
-    boolean deleteRole(long id);
+    Notification deleteRole(long id);
+
+    List<RoleDto> importFromExcel(List<MultipartFile> multipartFiles);
 
 }

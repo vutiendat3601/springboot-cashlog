@@ -1,5 +1,6 @@
 package com.dv.cashlog.io.entity;
 
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.Column;
@@ -20,12 +21,21 @@ public class RoleEntity {
     @GeneratedValue
     private Long id;
 
-    @Column
+    @Column(unique = true)
     private String name;
 
-    @Column
     private String description;
 
     @OneToMany(mappedBy = "role")
     private List<UserEntity> users;
+
+    private LocalDateTime createdDate;
+
+    private LocalDateTime updatedDate;
+
+    private String createdBy;
+    
+    private String updatedBy;
+
+    private Boolean isDeleted;
 }
