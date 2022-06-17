@@ -47,7 +47,8 @@ public class RoleController {
 
     @PostMapping("/import-from-excel")
     public List<RoleResponseModel> importFromExcel(
-            @RequestParam("Source-File") List<MultipartFile> files) {
+            @RequestParam("Source-File") List<MultipartFile> files, HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
         List<RoleDto> roleDtoResp = roleService.importFromExcel(files);
         List<RoleResponseModel> rolesResp = new ArrayList<>();
         roleDtoResp.forEach(o -> {
@@ -58,18 +59,20 @@ public class RoleController {
     }
 
     @GetMapping("/get/{id}")
-    public RoleResponseModel getRole(@PathVariable long id) {
+    public RoleResponseModel getRole(@PathVariable long id, HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
         ModelMapper modelMapper = new ModelMapper();
-
         RoleDto roleDtoResp = roleService.getRole(id);
         RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
         return roleResp;
     }
 
-    @GetMapping("/get/all")
+    @GetMapping("/get")
     public List<RoleResponseModel> getRoles(
             @RequestParam(value = "page", defaultValue = "0") int page,
-            @RequestParam(value = "limit", defaultValue = "5") int limit) {
+            @RequestParam(value = "limit", defaultValue = "5") int limit,
+            HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
         List<RoleResponseModel> rolesResp = new ArrayList<>();
         List<RoleDto> rolesDtoResp = roleService.getRoles(page, limit);
 
@@ -82,7 +85,10 @@ public class RoleController {
     }
 
     @PutMapping("/update/{id}")
-    public RoleResponseModel updateRole(@PathVariable long id, @RequestBody RoleRequestModel roleReq) {
+    public RoleResponseModel updateRole(@PathVariable long id, @RequestBody RoleRequestModel roleReq,
+            HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
+
         ModelMapper modelMapper = new ModelMapper();
 
         RoleDto roleDtoReq = modelMapper.map(roleReq, RoleDto.class);
@@ -94,7 +100,8 @@ public class RoleController {
     }
 
     @DeleteMapping("/delete/{id}")
-    public Notification deleteRole(@PathVariable long id) {
+    public Notification deleteRole(@PathVariable long id, HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
         return roleService.deleteRole(id);
     }
 
