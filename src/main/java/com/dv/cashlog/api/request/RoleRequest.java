@@ -7,7 +7,7 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class RoleRequestModel {
+public class RoleRequest {
 
     @NotNull(message = "Role name must be not null!!!")
     private String name;

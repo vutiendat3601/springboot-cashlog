@@ -19,9 +19,9 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dv.cashlog.api.request.RoleRequestModel;
-import com.dv.cashlog.api.response.Notification;
-import com.dv.cashlog.api.response.RoleResponseModel;
+import com.dv.cashlog.api.request.RoleRequest;
+import com.dv.cashlog.api.response.NotificationResponse;
+import com.dv.cashlog.api.response.RoleResponse;
 import com.dv.cashlog.common.dto.RoleDto;
 import com.dv.cashlog.service.RoleService;
 
@@ -37,72 +37,99 @@ public class RoleController {
     private RoleService roleService;
 
     @PostMapping("/create")
-    public RoleResponseModel createRole(@RequestBody @Validated RoleRequestModel roleReq, HttpServletRequest req) {
+    public RoleResponse createRole(@RequestBody @Validated RoleRequest roleReq, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
+
+        // Convert Request Model to DtoRequest
         RoleDto roleDtoReq = modelMapper.map(roleReq, RoleDto.class);
+
+        // Delegate to Service
         RoleDto roleDtoResp = roleService.createRole(roleDtoReq, req);
-        RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
+
+        // Convert DtoResponse to ResponseModel
+        RoleResponse roleResp = modelMapper.map(roleDtoResp, RoleResponse.class);
+
         return roleResp;
     }
 
     @PostMapping("/import-from-excel")
-    public List<RoleResponseModel> importFromExcel(
-            @RequestParam("Source-File") List<MultipartFile> files, HttpServletRequest req) {
+    public List<RoleResponse> importFromExcel(
+            @RequestParam("Source-File") List<MultipartFile> excelFiles,
+            HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
-        List<RoleDto> roleDtoResp = roleService.importFromExcel(files);
-        List<RoleResponseModel> rolesResp = new ArrayList<>();
-        roleDtoResp.forEach(o -> {
-            RoleResponseModel roleResp = modelMapper.map(o, RoleResponseModel.class);
-            rolesResp.add(roleResp);
+
+        // Delegate to Service
+        List<RoleDto> rolesDtoResp = roleService.importFromExcel(excelFiles, req);
+
+        // Convert DtoResponse to ResponseModel
+        List<RoleResponse> rolesResp = new ArrayList<>();
+        rolesDtoResp.forEach(e -> {
+            RoleResponse roleElement = modelMapper.map(e, RoleResponse.class);
+            rolesResp.add(roleElement);
         });
+
         return rolesResp;
     }
 
     @GetMapping("/get/{id}")
-    public RoleResponseModel getRole(@PathVariable long id, HttpServletRequest req) {
+    public RoleResponse getRole(@PathVariable long id, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
-        ModelMapper modelMapper = new ModelMapper();
-        RoleDto roleDtoResp = roleService.getRole(id);
-        RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
+
+        // Delegate to Service
+        RoleDto roleDtoResp = roleService.getRole(id, req);
+
+        // Convert DtoResponse to ResponseModel
+        RoleResponse roleResp = modelMapper.map(roleDtoResp, RoleResponse.class);
+
         return roleResp;
     }
 
     @GetMapping("/get")
-    public List<RoleResponseModel> getRoles(
+    public List<RoleResponse> getRoles(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "limit", defaultValue = "5") int limit,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
-        List<RoleResponseModel> rolesResp = new ArrayList<>();
-        List<RoleDto> rolesDtoResp = roleService.getRoles(page, limit);
 
-        ModelMapper modelMapper = new ModelMapper();
+
+        
+        // Delegate to Service
+        List<RoleDto> rolesDtoResp = roleService.getRoles(page, limit, req);
+        
+        // Convert DtoResponse to ResponseModel
+        List<RoleResponse> rolesResp = new ArrayList<>();
         for (RoleDto role : rolesDtoResp) {
-            RoleResponseModel roleResp = modelMapper.map(role, RoleResponseModel.class);
+            RoleResponse roleResp = modelMapper.map(role, RoleResponse.class);
             rolesResp.add(roleResp);
         }
+
         return rolesResp;
     }
 
     @PutMapping("/update/{id}")
-    public RoleResponseModel updateRole(@PathVariable long id, @RequestBody RoleRequestModel roleReq,
+    public RoleResponse updateRole(@PathVariable long id, @RequestBody RoleRequest roleReq,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
-        ModelMapper modelMapper = new ModelMapper();
-
+        // Convert RequestModel to DtoRequest
         RoleDto roleDtoReq = modelMapper.map(roleReq, RoleDto.class);
         roleDtoReq.setId(id);
 
-        RoleDto roleDtoResp = roleService.updateRole(roleDtoReq);
-        RoleResponseModel roleResp = modelMapper.map(roleDtoResp, RoleResponseModel.class);
+        // Delegate to Service
+        RoleDto roleDtoResp = roleService.updateRole(roleDtoReq, req);
+
+        // Convert DtoResponse to ResponseModel
+        RoleResponse roleResp = modelMapper.map(roleDtoResp, RoleResponse.class);
+
         return roleResp;
     }
 
     @DeleteMapping("/delete/{id}")
-    public Notification deleteRole(@PathVariable long id, HttpServletRequest req) {
+    public NotificationResponse deleteRole(@PathVariable long id, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
-        return roleService.deleteRole(id);
+
+        // Delegate to Service and return Status
+        return roleService.deleteRole(id, req);
     }
 
 }

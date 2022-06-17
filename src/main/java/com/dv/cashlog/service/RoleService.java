@@ -6,20 +6,20 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dv.cashlog.api.response.Notification;
+import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.common.dto.RoleDto;
 
 public interface RoleService {
     RoleDto createRole(RoleDto roleReq, HttpServletRequest req);
 
-    RoleDto getRole(long id);
+    RoleDto getRole(long id, HttpServletRequest req);
 
-    List<RoleDto> getRoles(int page, int limit);
+    List<RoleDto> getRoles(int page, int limit, HttpServletRequest req);
 
-    RoleDto updateRole(RoleDto roleReq);
+    RoleDto updateRole(RoleDto roleReq, HttpServletRequest req);
 
-    Notification deleteRole(long id);
+    NotificationResponse deleteRole(long id, HttpServletRequest req);
 
-    List<RoleDto> importFromExcel(List<MultipartFile> multipartFiles);
+    List<RoleDto> importFromExcel(List<MultipartFile> excelFiles, HttpServletRequest req);
 
 }

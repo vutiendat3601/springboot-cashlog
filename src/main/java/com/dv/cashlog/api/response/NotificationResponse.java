@@ -13,7 +13,7 @@ import lombok.Setter;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
-public class Notification {
+public class NotificationResponse {
     
     @JsonProperty("date_time")
     private LocalDateTime dateTime;

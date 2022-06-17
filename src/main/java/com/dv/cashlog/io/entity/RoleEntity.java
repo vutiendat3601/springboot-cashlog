@@ -3,6 +3,7 @@ package com.dv.cashlog.io.entity;
 import java.time.LocalDateTime;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -21,12 +22,12 @@ public class RoleEntity {
     @GeneratedValue
     private Long id;
 
-    @Column(unique = true)
+    @Column
     private String name;
 
     private String description;
 
-    @OneToMany(mappedBy = "role")
+    @OneToMany(mappedBy = "role", cascade = CascadeType.ALL)
     private List<UserEntity> users;
 
     private LocalDateTime createdDate;

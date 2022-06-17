@@ -1,7 +1,7 @@
 package com.dv.cashlog.api.response;
 
-public enum NotificationMessage {
-    SUCCESSFUL("successful");
+public enum NotificationStatus {
+    SUCCESSFUL("successful!!!");
 
     private String message;
 
@@ -9,7 +9,7 @@ public enum NotificationMessage {
         return message;
     }
 
-    private NotificationMessage(String message) {
+    private NotificationStatus(String message) {
         this.message = message;
     }
 }

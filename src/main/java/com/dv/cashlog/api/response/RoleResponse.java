@@ -5,8 +5,11 @@ import lombok.Setter;
 
 @Getter
 @Setter
-public class MajorResponseModel {
+public class RoleResponse {
+    
     private long id;
+
     private String name;
+    
     private String description;
 }

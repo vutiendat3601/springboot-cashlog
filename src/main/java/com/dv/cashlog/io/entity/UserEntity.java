@@ -2,6 +2,7 @@ package com.dv.cashlog.io.entity;
 
 import java.io.Serializable;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -35,7 +36,7 @@ public class UserEntity implements Serializable {
 
     private String fullName;
 
-    private LocalDate birthDay;
+    private LocalDate birthday;
 
     private String userCode;
 
@@ -45,4 +46,14 @@ public class UserEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "role_id")
     private RoleEntity role;
+
+    private String createdBy;
+
+    private LocalDateTime createdDate;
+
+    private String updatedBy;
+
+    private LocalDateTime updatedDate;
+
+    private Boolean isDeleted;
 }
