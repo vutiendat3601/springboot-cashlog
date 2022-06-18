@@ -41,7 +41,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleDto createRole(RoleDto roleReq, HttpServletRequest req) {
         // Check existence of role
         RoleEntity roleEntity = roleRepository.findByName(roleReq.getName());
-        if (roleEntity != null && !roleEntity.getIsDeleted()) {
+        if (roleEntity != null) {
             throw new AppException(ErrorMessage.NAME_WAS_EXISTED.getMessage(), HttpStatus.CONFLICT);
         }
 
@@ -72,7 +72,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleDto getRole(long id, HttpServletRequest req) {
         // Check existence of role
         Optional<RoleEntity> roleRecord = roleRepository.findById(id);
-        if (!roleRecord.isPresent() || roleRecord.get().getIsDeleted()) {
+        if (!roleRecord.isPresent()) {
             throw new AppException(ErrorMessage.NO_RECORD_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -122,7 +122,7 @@ public class RoleServiceImpl implements RoleService {
     public RoleDto updateRole(RoleDto roleReq, HttpServletRequest req) {
         // Check exsitence of role
         Optional<RoleEntity> roleRecord = roleRepository.findById(roleReq.getId());
-        if (!roleRecord.isPresent() || roleRecord.get().getIsDeleted()) {
+        if (!roleRecord.isPresent()) {
             throw new AppException(ErrorMessage.NO_RECORD_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 

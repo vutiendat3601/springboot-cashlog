@@ -2,7 +2,7 @@ spring:
   datasource:
     username: root
     password: 123456a@
-    url: jdbc:mysql://127.0.0.1:3306/cashlog
+    url: jdbc:mysql://127.0.0.1:3306/springboot_cashlog
   jpa:
     show-sql: true
     hibernate:

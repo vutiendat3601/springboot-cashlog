@@ -23,6 +23,7 @@ import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.response.NotificationResponse;
+import com.dv.cashlog.api.response.NotificationStatus;
 import com.dv.cashlog.common.dto.ClassDto;
 import com.dv.cashlog.common.dto.MajorDto;
 import com.dv.cashlog.exception.AppException;
@@ -49,13 +50,13 @@ public class ClassServiceImpl implements ClassService {
         ClassEntity classEntity = classRepository.findByName(classReq.getName());
 
         // Check existence of class
-        if (classEntity != null && !classEntity.getIsDeleted()) {
+        if (classEntity != null) {
             throw new AppException(ErrorMessage.CLASS_WAS_EXISTED.getMessage(), HttpStatus.CONFLICT);
         }
 
         // Check existence of major
         MajorEntity majorEntity = majorRepository.findByName(classReq.getNameOfMajor());
-        if (majorEntity == null || majorEntity.getIsDeleted()) {
+        if (majorEntity == null) {
             throw new AppException(ErrorMessage.MAJOR_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -87,7 +88,7 @@ public class ClassServiceImpl implements ClassService {
         // Check existence of user
         Optional<ClassEntity> classEntity = classRepository.findById(id);
 
-        if (!classEntity.isPresent() || classEntity.get().getIsDeleted()) {
+        if (!classEntity.isPresent()) {
             throw new AppException(ErrorMessage.CLASS_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -134,12 +135,56 @@ public class ClassServiceImpl implements ClassService {
 
     @Override
     public ClassDto updateClass(ClassDto classReq, HttpServletRequest req) {
-        return null;
+        // Check exsitence of role
+        Optional<ClassEntity> classRecord = classRepository.findById(classReq.getId());
+        if (!classRecord.isPresent()) {
+            throw new AppException(ErrorMessage.CLASS_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
+        // Check existence of major
+        MajorEntity majorEntity = majorRepository.findByName(classReq.getNameOfMajor());
+        if (majorEntity == null) {
+            throw new AppException(ErrorMessage.MAJOR_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        }
+        try {
+            // Convert DtoRequest to EntityRequest and prepare data
+            classReq.setId(classRecord.get().getId());
+            classReq.setCreatedDate(classRecord.get().getCreatedDate());
+            classReq.setCreatedBy(classRecord.get().getCreatedBy());
+            classReq.setUpdatedDate(LocalDateTime.now());
+            classReq.setUpdatedBy(classRecord.get().getUpdatedBy());
+            classReq.setIsDeleted(Boolean.FALSE);
+            MajorDto major = modelMapper.map(majorEntity, MajorDto.class);
+            classReq.setMajor(major);
+
+            // Save to Database
+            ClassEntity updateClass = modelMapper.map(classReq, ClassEntity.class);
+            updateClass = classRepository.save(updateClass);
+
+            // Convert and return DtoResp
+            ClassDto classResp = modelMapper.map(updateClass, ClassDto.class);
+            return classResp;
+        } catch (Exception e) {
+            throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Override
     public NotificationResponse deleteClass(long id, HttpServletRequest req) {
-        return null;
+        Optional<ClassEntity> classRecord = classRepository.findById(id);
+        if (!classRecord.isPresent()) {
+            throw new AppException(ErrorMessage.CLASS_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
+        try {
+            // Delete class in Database and return Status
+            classRecord.get().setIsDeleted(Boolean.TRUE);
+            classRepository.save(classRecord.get());
+            return new NotificationResponse(LocalDateTime.now(),
+                    NotificationStatus.SUCCESSFUL.getMessage());
+        } catch (Exception e) {
+            throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+        }
     }
 
     @Override
@@ -166,7 +211,7 @@ public class ClassServiceImpl implements ClassService {
 
                     // Check existence of role
                     ClassEntity classEntity = classRepository.findByName(classReq.getName());
-                    if (classEntity != null && !classEntity.getIsDeleted()) {
+                    if (classEntity != null) {
                         continue;
                     }
 
@@ -174,7 +219,7 @@ public class ClassServiceImpl implements ClassService {
                     classReq.setNameOfMajor(row.getCell(2).getStringCellValue());
                     MajorEntity majorEntity = majorRepository.findByName(classReq.getNameOfMajor());
 
-                    if (majorEntity == null || majorEntity.getIsDeleted()) {
+                    if (majorEntity == null) {
                         System.err.println(ErrorMessage.MAJOR_NOT_FOUND.getMessage());
                         continue;
                     }

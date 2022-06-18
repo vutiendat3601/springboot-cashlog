@@ -54,14 +54,14 @@ public class UserServiceImpl implements UserService {
     public UserDto createUser(UserDto userReq, HttpServletRequest req) {
         // Check existence of user email
         UserEntity userEntity = userRepository.findByEmail(userReq.getEmail());
-        if (userEntity != null && !userEntity.getIsDeleted()) {
+        if (userEntity != null) {
             throw new AppException(ErrorMessage.EMAIL_WAS_EXISTED.getMessage(),
                     HttpStatus.CONFLICT);
         }
 
         // Check existence of role
         RoleEntity roleEntity = roleRepository.findByName(userReq.getNameOfRole());
-        if (roleEntity == null || roleEntity.getIsDeleted()) {
+        if (roleEntity == null) {
             throw new AppException(ErrorMessage.ROLE_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -96,7 +96,7 @@ public class UserServiceImpl implements UserService {
         // Check existence of user
         UserEntity userEntity = userRepository.findByUserCode(userCode);
 
-        if (userEntity == null || userEntity.getIsDeleted()) {
+        if (userEntity == null) {
             throw new AppException(ErrorMessage.USER_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -146,12 +146,12 @@ public class UserServiceImpl implements UserService {
         // check existence of user
         UserEntity userEntity = userRepository.findByUserCode(userReq.getUserCode());
 
-        if (userEntity == null || userEntity.getIsDeleted()) {
+        if (userEntity == null) {
             throw new AppException(ErrorMessage.USER_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
         ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
-        if (classEntity == null || classEntity.getIsDeleted()) {
+        if (classEntity == null) {
             throw new AppException(ErrorMessage.CLASS_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -184,7 +184,7 @@ public class UserServiceImpl implements UserService {
     public NotificationResponse deleteUser(String userCode, HttpServletRequest req) {
         // Check existence of user
         UserEntity userEntity = userRepository.findByUserCode(userCode);
-        if (userEntity == null || userEntity.getIsDeleted()) {
+        if (userEntity == null) {
             throw new AppException(ErrorMessage.USER_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 

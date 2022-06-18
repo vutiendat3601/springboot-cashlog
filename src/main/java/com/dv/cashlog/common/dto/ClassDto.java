@@ -1,7 +1,6 @@
 package com.dv.cashlog.common.dto;
 
 import java.time.LocalDateTime;
-import java.util.List;
 
 import lombok.Getter;
 import lombok.Setter;
@@ -16,10 +15,8 @@ public class ClassDto {
     private String description;
 
     private String nameOfMajor;
-    
-    private MajorDto major;
 
-    private List<UserDto> users;
+    private MajorDto major;
 
     private LocalDateTime createdDate;
 

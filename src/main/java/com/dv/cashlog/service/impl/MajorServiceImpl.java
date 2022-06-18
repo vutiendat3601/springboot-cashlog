@@ -42,7 +42,7 @@ public class MajorServiceImpl implements MajorService {
     public MajorDto createMajor(MajorDto majorReq, HttpServletRequest req) {
         // Check existence of role
         MajorEntity majorEntity = majorRepository.findByName(majorReq.getName());
-        if (majorEntity != null && !majorEntity.getIsDeleted()) {
+        if (majorEntity != null) {
             throw new AppException(ErrorMessage.NAME_WAS_EXISTED.getMessage(), HttpStatus.CONFLICT);
         }
 
@@ -73,7 +73,7 @@ public class MajorServiceImpl implements MajorService {
     public MajorDto getMajor(long id, HttpServletRequest req) {
         // Check existence of role
         Optional<MajorEntity> majorRecord = majorRepository.findById(id);
-        if (!majorRecord.isPresent() || majorRecord.get().getIsDeleted()) {
+        if (!majorRecord.isPresent()) {
             throw new AppException(ErrorMessage.NO_RECORD_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
@@ -122,7 +122,7 @@ public class MajorServiceImpl implements MajorService {
     public MajorDto updateMajor(MajorDto majorReq, HttpServletRequest req) {
         // Check exsitence of role
         Optional<MajorEntity> majorRecord = majorRepository.findById(majorReq.getId());
-        if (!majorRecord.isPresent() || majorRecord.get().getIsDeleted()) {
+        if (!majorRecord.isPresent()) {
             throw new AppException(ErrorMessage.NO_RECORD_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 

@@ -10,11 +10,14 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Where(clause = "is_deleted = 0")
 @Entity(name = "transactions")
 public class TransactionEntity implements Serializable {
 
