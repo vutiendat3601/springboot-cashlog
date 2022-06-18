@@ -19,4 +19,6 @@ public class UserUpdateRequest {
     private String fullName;
 
     private LocalDate birthday;
+
+    private String nameOfClass;
 }

@@ -1,5 +1,6 @@
 package com.dv.cashlog.io.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 
 import javax.persistence.Column;
@@ -15,7 +16,9 @@ import lombok.Setter;
 @Getter
 @Setter
 @Entity(name = "transactions")
-public class TransactionEntity {
+public class TransactionEntity implements Serializable {
+
+    private final static long serialVersionUID = 1l;
 
     @Id
     @GeneratedValue

@@ -1,5 +1,6 @@
 package com.dv.cashlog.io.entity;
 
+import java.io.Serializable;
 import java.time.LocalDateTime;
 import java.util.List;
 
@@ -19,7 +20,9 @@ import lombok.Setter;
 @Setter
 @Where(clause = "is_deleted = 0")
 @Entity(name = "roles")
-public class RoleEntity {
+public class RoleEntity implements Serializable {
+
+    private final static long serialVersionUID = 1l;
 
     @Id
     @GeneratedValue

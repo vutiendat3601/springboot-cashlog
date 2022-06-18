@@ -23,12 +23,15 @@ import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.api.response.NotificationStatus;
+import com.dv.cashlog.common.dto.ClassDto;
 import com.dv.cashlog.common.dto.RoleDto;
 import com.dv.cashlog.common.dto.UserDto;
 import com.dv.cashlog.exception.AppException;
 import com.dv.cashlog.exception.ErrorMessage;
+import com.dv.cashlog.io.entity.ClassEntity;
 import com.dv.cashlog.io.entity.RoleEntity;
 import com.dv.cashlog.io.entity.UserEntity;
+import com.dv.cashlog.io.repository.ClassRepository;
 import com.dv.cashlog.io.repository.RoleRepository;
 import com.dv.cashlog.io.repository.UserRepository;
 import com.dv.cashlog.service.UserService;
@@ -43,6 +46,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private RoleRepository roleRepository;
+
+    @Autowired
+    private ClassRepository classRepository;
 
     @Override
     public UserDto createUser(UserDto userReq, HttpServletRequest req) {
@@ -63,6 +69,9 @@ public class UserServiceImpl implements UserService {
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         RoleDto role = modelMapper.map(roleEntity, RoleDto.class);
         userReq.setRole(role);
+        ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
+        ClassDto clazz = modelMapper.map(classEntity, ClassDto.class);
+        userReq.setClazz(clazz);
         userReq.setCreatedDate(LocalDateTime.now());
         // userReq.setCreatedBy("Dat Vu");
         userReq.setUpdatedDate(LocalDateTime.now());
@@ -141,12 +150,19 @@ public class UserServiceImpl implements UserService {
             throw new AppException(ErrorMessage.USER_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
+        ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
+        if (classEntity == null || classEntity.getIsDeleted()) {
+            throw new AppException(ErrorMessage.CLASS_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
         // Prepare data
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
-        RoleDto role = modelMapper.map(userEntity.getRole(), RoleDto.class);
         userReq.setId(userEntity.getId());
         userReq.setEmail(userEntity.getEmail());
+        RoleDto role = modelMapper.map(userEntity.getRole(), RoleDto.class);
         userReq.setRole(role);
+        ClassDto clazz = modelMapper.map(classEntity, ClassDto.class);
+        userReq.setClazz(clazz);
         userReq.setCreatedDate(userEntity.getCreatedDate());
         userReq.setCreatedBy(userEntity.getCreatedBy());
         userReq.setUpdatedDate(LocalDateTime.now());
@@ -227,6 +243,13 @@ public class UserServiceImpl implements UserService {
 
                     RoleDto role = modelMapper.map(roleEntity, RoleDto.class);
                     userReq.setRole(role);
+
+                    userReq.setNameOfClass(row.getCell(7).getStringCellValue());
+
+                    ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
+                    ClassDto clazz = modelMapper.map(classEntity, ClassDto.class);
+                    userReq.setClazz(clazz);
+
                     userReq.setCreatedDate(LocalDateTime.now());
                     // roleReq.setCreatedBy("Dat Vu");
                     userReq.setUpdatedDate(LocalDateTime.now());

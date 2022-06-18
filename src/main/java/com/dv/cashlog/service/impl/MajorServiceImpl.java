@@ -183,7 +183,7 @@ public class MajorServiceImpl implements MajorService {
                 for (int r = 1; r <= sheet.getLastRowNum(); r++) {
                     XSSFRow row = sheet.getRow(r);
                     MajorDto majorReq = new MajorDto();
-                    majorReq.setName(row.getCell(0).getStringCellValue());
+                    majorReq.setName(row.getCell(0).getStringCellValue().toUpperCase());
 
                     // Check existence of role
                     MajorEntity MajorEntity = majorRepository.findByName(majorReq.getName());

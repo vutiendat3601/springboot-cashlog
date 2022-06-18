@@ -18,116 +18,114 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
-import com.dv.cashlog.api.request.MajorRequest;
-import com.dv.cashlog.api.response.MajorResponse;
+import com.dv.cashlog.api.request.ClassRequest;
+import com.dv.cashlog.api.response.ClassResponse;
 import com.dv.cashlog.api.response.NotificationResponse;
-import com.dv.cashlog.common.dto.MajorDto;
-import com.dv.cashlog.service.MajorService;
+import com.dv.cashlog.common.dto.ClassDto;
+import com.dv.cashlog.service.ClassService;
 
 import lombok.extern.slf4j.Slf4j;
 
 @Slf4j
 @RestController
-@RequestMapping("/v1/major")
-public class MajorController {
+@RequestMapping("/v1/class")
+public class ClassController {
 
     @Autowired
-    private MajorService majorService;
+    private ClassService classService;
 
     private ModelMapper modelMapper = new ModelMapper();
 
     @PostMapping("/create")
-    public MajorResponse createMajor(@RequestBody MajorRequest majorReq, HttpServletRequest req) {
+    public ClassResponse createClass(@RequestBody ClassRequest classReq, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Convert Request Model to DtoRequest
-        MajorDto majorDtoReq = modelMapper.map(majorReq, MajorDto.class);
+        ClassDto classDtoReq = modelMapper.map(classReq, ClassDto.class);
 
         // Delegate to Service
-        MajorDto majorDtoResp = majorService.createMajor(majorDtoReq, req);
+        ClassDto classDtoResp = classService.createClass(classDtoReq, req);
 
         // Convert DtoResponse to ResponseModel
-        MajorResponse majorResp = modelMapper.map(majorDtoResp, MajorResponse.class);
+        ClassResponse classResp = modelMapper.map(classDtoResp, ClassResponse.class);
 
-        return majorResp;
+        return classResp;
     }
 
     @PostMapping("/create/import-from-excel")
-    public List<MajorResponse> importFromExcel(
+    public List<ClassResponse> importFromExcel(
             @RequestParam("Source-File") List<MultipartFile> excelFiles,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Delegate to Service
-        List<MajorDto> majorsDtoResp = majorService.importFromExcel(excelFiles, req);
+        List<ClassDto> classesDtoResp = classService.importFromExcel(excelFiles, req);
 
         // Convert DtoResponse to ResponseModel
-        List<MajorResponse> majorsResp = new ArrayList<>();
-        majorsDtoResp.forEach(e -> {
-            MajorResponse majorResp = modelMapper.map(e, MajorResponse.class);
-            majorsResp.add(majorResp);
+        List<ClassResponse> classesResp = new ArrayList<>();
+        classesDtoResp.forEach(e -> {
+            ClassResponse classResp = modelMapper.map(e, ClassResponse.class);
+            classesResp.add(classResp);
         });
 
-        return majorsResp;
+        return classesResp;
     }
 
     @GetMapping("/get/{id}")
-    public MajorResponse getMajor(@PathVariable long id, HttpServletRequest req) {
+    public ClassResponse getClass(@PathVariable long id, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Delegate to Service
-        MajorDto majorDtoResp = majorService.getMajor(id, req);
+        ClassDto classDtoResp = classService.getClass(id, req);
 
         // Convert DtoResponse to ResponseModel
-        MajorResponse majorResp = modelMapper.map(majorDtoResp, MajorResponse.class);
+        ClassResponse classResp = modelMapper.map(classDtoResp, ClassResponse.class);
 
-        return majorResp;
+        return classResp;
     }
 
     @GetMapping("/get")
-    public List<MajorResponse> getMajors(
+    public List<ClassResponse> getClasses(
             @RequestParam(value = "page", defaultValue = "0") int page,
             @RequestParam(value = "limit", defaultValue = "5") int limit,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Delegate to Service
-        List<MajorDto> majorsDtoResp = majorService.getMajors(page, limit, req);
+        List<ClassDto> classesDtoResp = classService.getClasses(page, limit, req);
 
         // Convert DtoResponse to ResponseModel
-        List<MajorResponse> majorsResp = new ArrayList<>();
-        for (MajorDto major : majorsDtoResp) {
-            MajorResponse majorResp = modelMapper.map(major, MajorResponse.class);
-            majorsResp.add(majorResp);
+        List<ClassResponse> majorsResp = new ArrayList<>();
+        for (ClassDto clazz : classesDtoResp) {
+            ClassResponse classResp = modelMapper.map(clazz, ClassResponse.class);
+            majorsResp.add(classResp);
         }
-
         return majorsResp;
     }
 
     @PutMapping("/update/{id}")
-    public MajorResponse updateMajor(@PathVariable long id, @RequestBody MajorRequest majorReq,
+    public ClassResponse updateClass(@PathVariable long id, @RequestBody ClassRequest classReq,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Convert RequestModel to DtoRequest
-        MajorDto majorDtoReq = modelMapper.map(majorReq, MajorDto.class);
-        majorDtoReq.setId(id);
+        ClassDto classDtoReq = modelMapper.map(classReq, ClassDto.class);
+        classDtoReq.setId(id);
 
         // Delegate to Service
-        MajorDto majorDtoResp = majorService.updateMajor(majorDtoReq, req);
+        ClassDto classDtoResp = classService.updateClass(classDtoReq, req);
 
         // Convert DtoResponse to ResponseModel
-        MajorResponse majorResp = modelMapper.map(majorDtoResp, MajorResponse.class);
+        ClassResponse classResp = modelMapper.map(classDtoResp, ClassResponse.class);
 
-        return majorResp;
+        return classResp;
     }
 
     @DeleteMapping("/delete/{id}")
-    public NotificationResponse deleteMajor(@PathVariable long id, HttpServletRequest req) {
+    public NotificationResponse deleteClass(@PathVariable long id, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Delegate to Service and return Status
-        return majorService.deleteMajor(id, req);
+        return classService.deleteClass(id, req);
     }
-
 }

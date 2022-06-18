@@ -43,7 +43,11 @@ public class UserEntity implements Serializable {
 
     private String userCode;
 
-    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "class_id")
+    private ClassEntity clazz;
+
+    @OneToMany(mappedBy = "user", cascade = CascadeType.MERGE)
     private List<TransactionEntity> transactions;
 
     @ManyToOne

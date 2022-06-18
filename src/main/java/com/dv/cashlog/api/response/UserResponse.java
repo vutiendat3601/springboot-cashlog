@@ -15,4 +15,5 @@ public class UserResponse {
     private LocalDate birthday;
     private String userCode;
     private RoleResponse role;
+    private ClassResponse clazz;
 }

@@ -18,6 +18,8 @@ public class UserDto {
     private String userCode;
     private String nameOfRole;
     private RoleDto role;
+    private String nameOfClass;
+    private ClassDto clazz;
     private String createdBy;
     private LocalDateTime createdDate;
     private String updatedBy;

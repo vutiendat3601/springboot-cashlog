@@ -34,4 +34,6 @@ public class UserRequest {
     @NotNull(message = "Name of role must not be null")
     @NotBlank(message = "Name of role must not be blank")
     private String nameOfRole;
+
+    private String nameOfClass;
 }

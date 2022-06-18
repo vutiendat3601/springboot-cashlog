@@ -10,7 +10,7 @@ import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.common.dto.MajorDto;
 
 public interface MajorService {
-    MajorDto createMajor(MajorDto userReq, HttpServletRequest req);
+    MajorDto createMajor(MajorDto majorReq, HttpServletRequest req);
 
     MajorDto getMajor(long id, HttpServletRequest req);
 
