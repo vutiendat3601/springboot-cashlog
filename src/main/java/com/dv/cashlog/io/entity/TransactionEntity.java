@@ -45,4 +45,14 @@ public class TransactionEntity implements Serializable {
     @ManyToOne
     @JoinColumn(name = "user_id")
     private UserEntity user;
+
+    private String createdBy;
+
+    private LocalDateTime createdDate;
+
+    private String updatedBy;
+
+    private LocalDateTime updatedDate;
+
+    private Boolean isDeleted;
 }
