@@ -208,7 +208,11 @@ public class RoleServiceImpl implements RoleService {
 
         // Save to Database
         if (!roleRecords.isEmpty()) {
-            roleRepository.saveAll(roleRecords);
+            try {
+                roleRepository.saveAll(roleRecords);
+            } catch (Exception e) {
+                throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
         }
 
         // Convert and return RoleDto List

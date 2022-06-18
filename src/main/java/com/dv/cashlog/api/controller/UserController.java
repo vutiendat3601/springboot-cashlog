@@ -16,8 +16,10 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.request.UserRequest;
+import com.dv.cashlog.api.request.UserUpdateRequest;
 import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.api.response.RoleResponse;
 import com.dv.cashlog.api.response.UserResponse;
@@ -50,6 +52,25 @@ public class UserController {
         UserResponse userResp = modelMapper.map(userDtoResp, UserResponse.class);
         userResp.setRole(role);
         return userResp;
+    }
+
+    @PostMapping("/create/import-from-excel")
+    public List<UserResponse> importFromExcel(
+            @RequestParam("Source-File") List<MultipartFile> excelFiles,
+            HttpServletRequest req) {
+        log.info("HTTP Request: {}", req);
+
+        // Delegate to Service
+        List<UserDto> usersDtoResp = userService.importFromExcel(excelFiles, req);
+
+        // Convert DtoResponse to ResponseModel
+        List<UserResponse> usersResp = new ArrayList<>();
+        usersDtoResp.forEach(e -> {
+            UserResponse userResponse = modelMapper.map(e, UserResponse.class);
+            usersResp.add(userResponse);
+        });
+
+        return usersResp;
     }
 
     @GetMapping("/get/{userCode}")
@@ -89,7 +110,7 @@ public class UserController {
 
     @PutMapping("update/{userCode}")
     public UserResponse updateUser(@PathVariable String userCode,
-            @RequestBody UserRequest userReq,
+            @RequestBody UserUpdateRequest userReq,
             HttpServletRequest req) {
         // Convert to UserDto
         UserDto userDtoReq = modelMapper.map(userReq, UserDto.class);

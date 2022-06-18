@@ -16,7 +16,7 @@ public class UserDto {
     private String fullName;
     private LocalDate birthday;
     private String userCode;
-    private String roleName;
+    private String nameOfRole;
     private RoleDto role;
     private String createdBy;
     private LocalDateTime createdDate;

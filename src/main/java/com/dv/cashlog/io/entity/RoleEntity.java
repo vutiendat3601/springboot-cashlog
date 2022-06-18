@@ -10,11 +10,14 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Where(clause = "is_deleted = 0")
 @Entity(name = "roles")
 public class RoleEntity {
 
@@ -35,7 +38,7 @@ public class RoleEntity {
     private LocalDateTime updatedDate;
 
     private String createdBy;
-    
+
     private String updatedBy;
 
     private Boolean isDeleted;

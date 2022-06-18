@@ -13,11 +13,14 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
+import org.hibernate.annotations.Where;
+
 import lombok.Getter;
 import lombok.Setter;
 
 @Getter
 @Setter
+@Where(clause = "is_deleted = 0")
 @Entity(name = "users")
 public class UserEntity implements Serializable {
     private static final long serialVersionUID = 1l;

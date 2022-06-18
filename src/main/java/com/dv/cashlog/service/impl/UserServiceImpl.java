@@ -1,5 +1,6 @@
 package com.dv.cashlog.service.impl;
 
+import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
@@ -7,15 +8,18 @@ import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
+import org.apache.poi.xssf.usermodel.XSSFRow;
+import org.apache.poi.xssf.usermodel.XSSFSheet;
+import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.modelmapper.ModelMapper;
 import org.modelmapper.convention.MatchingStrategies;
-import org.modelmapper.spi.MatchingStrategy;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
+import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.api.response.NotificationStatus;
@@ -50,7 +54,7 @@ public class UserServiceImpl implements UserService {
         }
 
         // Check existence of role
-        RoleEntity roleEntity = roleRepository.findByName(userReq.getRoleName());
+        RoleEntity roleEntity = roleRepository.findByName(userReq.getNameOfRole());
         if (roleEntity == null || roleEntity.getIsDeleted()) {
             throw new AppException(ErrorMessage.ROLE_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
@@ -83,8 +87,8 @@ public class UserServiceImpl implements UserService {
         // Check existence of user
         UserEntity userEntity = userRepository.findByUserCode(userCode);
 
-        if (userEntity == null) {
-            throw new AppException(ErrorMessage.ROLE_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        if (userEntity == null || userEntity.getIsDeleted()) {
+            throw new AppException(ErrorMessage.USER_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
         }
 
         // convert and return DtoRespone
@@ -138,7 +142,10 @@ public class UserServiceImpl implements UserService {
         }
 
         // Prepare data
+        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         RoleDto role = modelMapper.map(userEntity.getRole(), RoleDto.class);
+        userReq.setId(userEntity.getId());
+        userReq.setEmail(userEntity.getEmail());
         userReq.setRole(role);
         userReq.setCreatedDate(userEntity.getCreatedDate());
         userReq.setCreatedBy(userEntity.getCreatedBy());
@@ -174,6 +181,82 @@ public class UserServiceImpl implements UserService {
         } catch (Exception e) {
             throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
+    }
+
+    @Override
+    public List<UserDto> importFromExcel(List<MultipartFile> excelFiles, HttpServletRequest req) {
+        // Check existence of file
+        if (excelFiles.isEmpty()) {
+            throw new AppException(ErrorMessage.FILE_NOT_FOUND.getMessage(), HttpStatus.NOT_FOUND);
+        }
+
+        // Prepare data to save
+        List<UserEntity> userRecords = new ArrayList<>();
+        for (MultipartFile m : excelFiles) {
+            try {
+                XSSFWorkbook workBook = new XSSFWorkbook(m.getInputStream());
+                XSSFSheet sheet = workBook.getSheetAt(0);
+
+                // Read data row by row
+                modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT)
+                        .setFullTypeMatchingRequired(true);
+                for (int r = 1; r <= sheet.getLastRowNum(); r++) {
+                    XSSFRow row = sheet.getRow(r);
+                    UserDto userReq = new UserDto();
+                    userReq.setEmail(row.getCell(0).getStringCellValue()); // email
+
+                    // Check existence of role
+                    UserEntity userEntity = userRepository.findByEmail(userReq.getEmail());
+                    if (userEntity != null && !userEntity.getIsDeleted()) {
+                        continue;
+                    }
+
+                    userReq.setPassword(row.getCell(1).getStringCellValue());
+                    userReq.setPhone(row.getCell(2).getStringCellValue());
+                    userReq.setFullName(row.getCell(3).getStringCellValue());
+                    userReq.setBirthday(row.getCell(4).getLocalDateTimeCellValue().toLocalDate());
+                    userReq.setUserCode(row.getCell(5).getStringCellValue());
+                    String roleName = row.getCell(6).getStringCellValue();
+
+                    RoleEntity roleEntity = roleRepository.findByName(roleName);
+
+                    if (roleEntity == null || roleEntity.getIsDeleted()) {
+                        System.err.println(ErrorMessage.ROLE_NOT_FOUND.getMessage());
+                        continue;
+                    }
+
+                    RoleDto role = modelMapper.map(roleEntity, RoleDto.class);
+                    userReq.setRole(role);
+                    userReq.setCreatedDate(LocalDateTime.now());
+                    // roleReq.setCreatedBy("Dat Vu");
+                    userReq.setUpdatedDate(LocalDateTime.now());
+                    // roleReq.setUpdatedBy("Dat Vu");
+                    userReq.setIsDeleted(Boolean.FALSE);
+
+                    UserEntity userRecord = modelMapper.map(userReq, UserEntity.class);
+                    userRecords.add(userRecord);
+                }
+            } catch (IOException e) {
+                throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        // Save to Database
+        if (!userRecords.isEmpty()) {
+            try {
+                userRepository.saveAll(userRecords);
+            } catch (Exception e) {
+                throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            }
+        }
+
+        // Convert and return RoleDto List
+        List<UserDto> usersResp = new ArrayList<>();
+        for (UserEntity record : userRecords) {
+            UserDto userDto = modelMapper.map(record, UserDto.class);
+            usersResp.add(userDto);
+        }
+        return usersResp;
     }
 
 }

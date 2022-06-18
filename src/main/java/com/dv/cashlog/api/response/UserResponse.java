@@ -10,6 +10,7 @@ import lombok.Setter;
 public class UserResponse {
     private long id;
     private String email;
+    private String phone;
     private String fullName;
     private LocalDate birthday;
     private String userCode;
