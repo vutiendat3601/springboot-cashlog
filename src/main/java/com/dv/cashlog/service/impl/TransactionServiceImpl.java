@@ -14,7 +14,6 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.stereotype.Service;
-import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.common.dto.BankDto;
 import com.dv.cashlog.common.dto.TransactionDto;
@@ -93,7 +92,7 @@ public class TransactionServiceImpl implements TransactionService {
     public List<TransactionDto> getTransactions(int page, int limit, HttpServletRequest req) {
 
         page = page > 0 ? page - 1 : 0;
-        
+
         try {
             Pageable pageableReq = PageRequest.of(page, limit);
             Page<TransactionEntity> transactionPage = transactionRepository.findAll(pageableReq);
@@ -114,12 +113,6 @@ public class TransactionServiceImpl implements TransactionService {
         } catch (Exception e) {
             throw new AppException(e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
         }
-    }
-
-    @Override
-    public List<TransactionDto> importFromExcel(List<MultipartFile> excelFiles, HttpServletRequest req) {
-        // TODO Auto-generated method stub
-        return null;
     }
 
 }
