@@ -38,7 +38,8 @@ import com.dv.cashlog.service.UserService;
 @Service
 public class UserServiceImpl implements UserService {
 
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private UserRepository userRepository;

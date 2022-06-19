@@ -32,7 +32,8 @@ import com.dv.cashlog.service.RoleService;
 
 @Service
 public class RoleServiceImpl implements RoleService {
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private RoleRepository roleRepository;

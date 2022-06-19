@@ -32,11 +32,11 @@ import com.dv.cashlog.service.MajorService;
 
 @Service
 public class MajorServiceImpl implements MajorService {
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private MajorRepository majorRepository;
-
-    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public MajorDto createMajor(MajorDto majorReq, HttpServletRequest req) {

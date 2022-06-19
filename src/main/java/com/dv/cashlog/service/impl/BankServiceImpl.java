@@ -32,7 +32,8 @@ import com.dv.cashlog.service.BankService;
 
 @Service
 public class BankServiceImpl implements BankService {
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private BankRepository bankRepository;

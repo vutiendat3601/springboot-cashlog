@@ -36,14 +36,14 @@ import com.dv.cashlog.service.ClassService;
 
 @Service
 public class ClassServiceImpl implements ClassService {
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private ClassRepository classRepository;
 
     @Autowired
     private MajorRepository majorRepository;
-
-    private ModelMapper modelMapper = new ModelMapper();
 
     @Override
     public ClassDto createClass(ClassDto classReq, HttpServletRequest req) {

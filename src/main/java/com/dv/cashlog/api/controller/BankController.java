@@ -32,7 +32,9 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("v1/bank")
 public class BankController {
-    private ModelMapper modelMapper = new ModelMapper();
+
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private BankService bankService;
@@ -106,12 +108,12 @@ public class BankController {
     }
 
     @PutMapping("/update/{id}")
-    public BankResponse updateBank(@PathVariable long id, @RequestBody RoleRequest roleReq,
+    public BankResponse updateBank(@PathVariable long id, @RequestBody @Validated BankRequest bankReq,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Convert RequestModel to DtoRequest
-        BankDto bankDtoReq = modelMapper.map(roleReq, BankDto.class);
+        BankDto bankDtoReq = modelMapper.map(bankReq, BankDto.class);
         bankDtoReq.setId(id);
 
         // Delegate to Service

@@ -31,7 +31,8 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/v1/role")
 public class RoleController {
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private RoleService roleService;
@@ -91,11 +92,9 @@ public class RoleController {
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
-
-        
         // Delegate to Service
         List<RoleDto> rolesDtoResp = roleService.getRoles(page, limit, req);
-        
+
         // Convert DtoResponse to ResponseModel
         List<RoleResponse> rolesResp = new ArrayList<>();
         for (RoleDto role : rolesDtoResp) {
@@ -107,7 +106,7 @@ public class RoleController {
     }
 
     @PutMapping("/update/{id}")
-    public RoleResponse updateRole(@PathVariable long id, @RequestBody RoleRequest roleReq,
+    public RoleResponse updateRole(@PathVariable long id, @RequestBody @Validated RoleRequest roleReq,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 

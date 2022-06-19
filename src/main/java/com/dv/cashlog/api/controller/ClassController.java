@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -30,14 +31,14 @@ import lombok.extern.slf4j.Slf4j;
 @RestController
 @RequestMapping("/v1/class")
 public class ClassController {
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private ClassService classService;
 
-    private ModelMapper modelMapper = new ModelMapper();
-
     @PostMapping("/create")
-    public ClassResponse createClass(@RequestBody ClassRequest classReq, HttpServletRequest req) {
+    public ClassResponse createClass(@RequestBody @Validated ClassRequest classReq, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 
         // Convert Request Model to DtoRequest
@@ -104,7 +105,7 @@ public class ClassController {
     }
 
     @PutMapping("/update/{id}")
-    public ClassResponse updateClass(@PathVariable long id, @RequestBody ClassRequest classReq,
+    public ClassResponse updateClass(@PathVariable long id, @RequestBody @Validated ClassRequest classReq,
             HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
 

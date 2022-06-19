@@ -1586,3 +1586,23 @@ com.dv.cashlog.exception.AppException: Colected and paid both can not != 0 concu
 2022-06-19 18:51:05.727  INFO 1260 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
 2022-06-19 18:53:08.450  INFO 1260 --- [http-nio-8080-exec-4] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
 2022-06-19 18:53:53.761  INFO 1260 --- [http-nio-8080-exec-5] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
+2022-06-19 19:25:42.393  INFO 16600 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 16600 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 19:25:42.398  INFO 16600 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 19:25:43.602  INFO 16600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 19:25:43.722  INFO 16600 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 98 ms. Found 6 JPA repository interfaces.
+2022-06-19 19:25:44.782  INFO 16600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 19:25:44.810  INFO 16600 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 19:25:44.811  INFO 16600 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 19:25:45.044  INFO 16600 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 19:25:45.045  INFO 16600 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2528 ms
+2022-06-19 19:25:45.276  INFO 16600 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 19:25:45.363  INFO 16600 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 19:25:45.611  INFO 16600 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 19:25:45.844  INFO 16600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 19:25:46.471  INFO 16600 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 19:25:46.530  INFO 16600 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 19:25:47.825  INFO 16600 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 19:25:47.836  INFO 16600 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 19:25:48.627  WARN 16600 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 19:25:49.647  INFO 16600 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 19:25:49.666  INFO 16600 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 7.904 seconds (JVM running for 8.589)

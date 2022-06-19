@@ -7,6 +7,7 @@ import javax.servlet.http.HttpServletRequest;
 
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -33,13 +34,14 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/v1/user")
 public class UserController {
 
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private UserService userService;
 
     @PostMapping("/create")
-    public UserResponse createUser(@RequestBody UserRequest userReq, HttpServletRequest req) {
+    public UserResponse createUser(@RequestBody @Validated UserRequest userReq, HttpServletRequest req) {
         log.info("HTTP Request: {}", req);
         // Convert RequestModel to DtoRequest
         UserDto userDtoReq = modelMapper.map(userReq, UserDto.class);
@@ -109,7 +111,7 @@ public class UserController {
     }
 
     @PutMapping("update/{userCode}")
-    public UserResponse updateUser(@PathVariable String userCode,
+    public UserResponse updateUser(@PathVariable @Validated String userCode,
             @RequestBody UserUpdateRequest userReq,
             HttpServletRequest req) {
         // Convert to UserDto

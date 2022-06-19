@@ -30,7 +30,8 @@ import com.dv.cashlog.service.TransactionService;
 
 @Service
 public class TransactionServiceImpl implements TransactionService {
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private TransactionRepository transactionRepository;

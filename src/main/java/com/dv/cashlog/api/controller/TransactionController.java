@@ -27,7 +27,8 @@ import lombok.extern.slf4j.Slf4j;
 @RequestMapping("/v1/transaction")
 public class TransactionController {
 
-    private ModelMapper modelMapper = new ModelMapper();
+    @Autowired
+    private ModelMapper modelMapper;
 
     @Autowired
     private TransactionService transactionService;

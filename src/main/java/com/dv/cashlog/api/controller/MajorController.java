@@ -32,9 +32,10 @@ import lombok.extern.slf4j.Slf4j;
 public class MajorController {
 
     @Autowired
+    private ModelMapper modelMapper;
+    
+    @Autowired
     private MajorService majorService;
-
-    private ModelMapper modelMapper = new ModelMapper();
 
     @PostMapping("/create")
     public MajorResponse createMajor(@RequestBody MajorRequest majorReq, HttpServletRequest req) {
