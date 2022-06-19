@@ -12,9 +12,9 @@ public class CashlogApplication {
 		SpringApplication.run(CashlogApplication.class, args);
 	}
 
-	@Bean
-	public ModelMapper modelMapper() {
-		return new ModelMapper();
-	}
+    @Bean
+    ModelMapper modelMapper() {
+        return new ModelMapper();
+    }
 
 }
