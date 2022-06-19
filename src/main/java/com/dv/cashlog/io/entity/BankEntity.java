@@ -9,8 +9,6 @@ import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 
 import org.hibernate.annotations.Where;
@@ -21,9 +19,8 @@ import lombok.Setter;
 @Getter
 @Setter
 @Where(clause = "is_deleted = 0")
-@Entity(name = "classes")
-public class ClassEntity implements Serializable {
-
+@Entity(name = "banks")
+public class BankEntity implements Serializable {
     private final static long serialVersionUID = 1l;
 
     @Id
@@ -34,13 +31,9 @@ public class ClassEntity implements Serializable {
 
     private String description;
 
-    @OneToMany(mappedBy = "clazz", cascade = CascadeType.MERGE)
-    private List<UserEntity> users;
-
-    @ManyToOne(cascade = CascadeType.MERGE)
-    @JoinColumn(name = "major_id")
-    private MajorEntity major;
-
+    @OneToMany(mappedBy = "bank", cascade = CascadeType.MERGE)
+    private List<TransactionEntity> transactions;
+    
     private LocalDateTime createdDate;
 
     private LocalDateTime updatedDate;

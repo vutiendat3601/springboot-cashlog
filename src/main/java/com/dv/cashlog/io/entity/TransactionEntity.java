@@ -3,9 +3,11 @@ package com.dv.cashlog.io.entity;
 import java.io.Serializable;
 import java.time.LocalDateTime;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -24,7 +26,7 @@ public class TransactionEntity implements Serializable {
     private final static long serialVersionUID = 1l;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -39,8 +41,9 @@ public class TransactionEntity implements Serializable {
     @Column
     private Double paid;
 
-    @Column
-    private String src_money;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "bank_id")
+    private BankEntity bank;
 
     @ManyToOne
     @JoinColumn(name = "user_id")

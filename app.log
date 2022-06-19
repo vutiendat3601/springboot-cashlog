@@ -754,3 +754,835 @@ com.dv.cashlog.exception.AppException: User was not found!!!
 	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
 
 2022-06-19 03:26:50.300  WARN 11544 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=2h16m53s589ms275탎800ns).
+2022-06-19 15:08:32.235  INFO 6948 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 6948 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 15:08:32.243  INFO 6948 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 15:08:33.267  INFO 6948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 15:08:33.382  INFO 6948 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 4 JPA repository interfaces.
+2022-06-19 15:08:34.249  INFO 6948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 15:08:34.281  INFO 6948 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 15:08:34.283  INFO 6948 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 15:08:34.459  INFO 6948 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 15:08:34.459  INFO 6948 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2113 ms
+2022-06-19 15:08:34.643  INFO 6948 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 15:08:34.733  INFO 6948 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 15:08:34.925  INFO 6948 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 15:08:35.047  INFO 6948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 15:08:35.615  INFO 6948 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 15:08:35.678  INFO 6948 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 15:08:37.041  INFO 6948 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 15:08:37.060  INFO 6948 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:08:37.751  WARN 6948 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 15:08:38.936  INFO 6948 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 15:08:38.959  INFO 6948 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 7.493 seconds (JVM running for 8.321)
+2022-06-19 15:08:40.982  INFO 6948 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 15:08:41.000  INFO 6948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 15:08:41.002  INFO 6948 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-19 15:08:41.033  INFO 6948 --- [http-nio-8080-exec-1] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:08:52.641  INFO 6948 --- [http-nio-8080-exec-2] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:08:52.726 ERROR 6948 --- [http-nio-8080-exec-2] com.dv.cashlog.exception.AppHandler      : User was not found!!!
+
+com.dv.cashlog.exception.AppException: User was not found!!!
+	at com.dv.cashlog.service.impl.UserServiceImpl.getUser(UserServiceImpl.java:100) ~[classes/:na]
+	at com.dv.cashlog.api.controller.UserController.getUser(UserController.java:81) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doGet(FrameworkServlet.java:898) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:655) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 15:08:57.518  INFO 6948 --- [http-nio-8080-exec-3] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:03.883  INFO 6948 --- [http-nio-8080-exec-4] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:09.647  INFO 6948 --- [http-nio-8080-exec-5] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:22.488  INFO 6948 --- [http-nio-8080-exec-6] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:29.367  INFO 6948 --- [http-nio-8080-exec-7] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:36.753  INFO 6948 --- [http-nio-8080-exec-8] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:09:51.828  INFO 6948 --- [http-nio-8080-exec-9] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:10:00.796  INFO 6948 --- [http-nio-8080-exec-10] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:10:07.146  INFO 6948 --- [http-nio-8080-exec-1] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:10:27.818  INFO 6948 --- [http-nio-8080-exec-2] c.d.c.api.controller.ClassController     : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:10:37.081  INFO 6948 --- [http-nio-8080-exec-3] c.d.c.api.controller.ClassController     : HTTP Request: org.apache.catalina.connector.RequestFacade@2d0ec5f8
+2022-06-19 15:14:07.031  INFO 1784 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 1784 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 15:14:07.042  INFO 1784 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 15:14:08.037  INFO 1784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 15:14:08.136  INFO 1784 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 75 ms. Found 4 JPA repository interfaces.
+2022-06-19 15:14:10.414  INFO 1784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 15:14:10.456  INFO 1784 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 15:14:10.459  INFO 1784 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 15:14:10.930  INFO 1784 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 15:14:10.934  INFO 1784 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 3812 ms
+2022-06-19 15:14:11.794  INFO 1784 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 15:14:12.215  INFO 1784 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 15:14:13.214  INFO 1784 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 15:14:13.770  INFO 1784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 15:14:15.283  INFO 1784 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 15:14:15.410  INFO 1784 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 15:14:19.702  INFO 1784 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 15:14:19.718  INFO 1784 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:14:21.400  WARN 1784 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 15:14:24.291  INFO 1784 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 15:14:24.307  INFO 1784 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 18.008 seconds (JVM running for 18.499)
+2022-06-19 15:14:47.597  INFO 1784 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 15:14:47.599  INFO 1784 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 15:14:47.603  INFO 1784 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-06-19 15:14:47.719  INFO 1784 --- [http-nio-8080-exec-2] c.d.c.api.controller.RoleController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@2b880422
+2022-06-19 15:15:13.251  INFO 1784 --- [http-nio-8080-exec-1] c.d.c.api.controller.MajorController     : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@7a526596
+2022-06-19 15:15:41.483  INFO 1784 --- [http-nio-8080-exec-3] c.d.c.api.controller.ClassController     : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@4c80f955
+2022-06-19 15:16:06.670  INFO 1784 --- [http-nio-8080-exec-4] c.d.c.api.controller.UserController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@345ec36c
+2022-06-19 15:41:38.115  INFO 11112 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 11112 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 15:41:38.120  INFO 11112 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 15:41:39.284  INFO 11112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 15:41:39.431  INFO 11112 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 111 ms. Found 5 JPA repository interfaces.
+2022-06-19 15:41:40.872  INFO 11112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 15:41:40.902  INFO 11112 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 15:41:40.904  INFO 11112 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 15:41:41.175  INFO 11112 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 15:41:41.175  INFO 11112 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2975 ms
+2022-06-19 15:41:41.649  INFO 11112 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 15:41:41.808  INFO 11112 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 15:41:42.320  INFO 11112 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 15:41:42.556  INFO 11112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 15:41:43.485  INFO 11112 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 15:41:43.558  INFO 11112 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 15:41:45.950  INFO 11112 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 15:41:45.973  INFO 11112 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:41:47.535  WARN 11112 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 15:41:49.929  INFO 11112 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 15:41:49.965  INFO 11112 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 12.523 seconds (JVM running for 13.181)
+2022-06-19 15:52:57.609  INFO 4680 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 4680 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 15:52:57.617  INFO 4680 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 15:53:01.093  INFO 4680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 15:53:01.396  INFO 4680 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 254 ms. Found 5 JPA repository interfaces.
+2022-06-19 15:53:03.902  INFO 4680 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 15:53:03.939  INFO 4680 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 15:53:03.942  INFO 4680 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 15:53:04.402  INFO 4680 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 15:53:04.402  INFO 4680 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6654 ms
+2022-06-19 15:53:05.168  INFO 4680 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 15:53:05.565  INFO 4680 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 15:53:06.344  INFO 4680 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 15:53:06.801  INFO 4680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 15:53:08.141  INFO 4680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 15:53:08.270  INFO 4680 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 15:53:11.937  INFO 4680 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 15:53:11.947  INFO 4680 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:53:12.062  WARN 4680 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'bankController': Unsatisfied dependency expressed through field 'bankService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.dv.cashlog.service.BankService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-06-19 15:53:12.066  INFO 4680 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:53:12.077  INFO 4680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-19 15:53:12.143  INFO 4680 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-06-19 15:53:12.149  INFO 4680 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-06-19 15:53:12.186  INFO 4680 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-19 15:53:12.246 ERROR 4680 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field bankService in com.dv.cashlog.api.controller.BankController required a bean of type 'com.dv.cashlog.service.BankService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.dv.cashlog.service.BankService' in your configuration.
+
+2022-06-19 15:53:46.088  INFO 18184 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 18184 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 15:53:46.101  INFO 18184 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 15:53:48.414  INFO 18184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 15:53:48.586  INFO 18184 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 150 ms. Found 5 JPA repository interfaces.
+2022-06-19 15:53:50.954  INFO 18184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 15:53:50.997  INFO 18184 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 15:53:51.000  INFO 18184 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 15:53:51.414  INFO 18184 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 15:53:51.418  INFO 18184 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5115 ms
+2022-06-19 15:53:52.104  INFO 18184 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 15:53:52.256  INFO 18184 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 15:53:52.739  INFO 18184 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 15:53:53.066  INFO 18184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 15:53:54.473  INFO 18184 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 15:53:54.565  INFO 18184 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 15:53:59.623  INFO 18184 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 15:53:59.654  INFO 18184 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 15:54:03.549  WARN 18184 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 15:54:06.953  INFO 18184 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 15:54:06.992  INFO 18184 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 22.226 seconds (JVM running for 23.28)
+2022-06-19 15:54:38.825  INFO 18184 --- [http-nio-8080-exec-2] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 15:54:38.828  INFO 18184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 15:54:38.832  INFO 18184 --- [http-nio-8080-exec-2] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 15:54:38.928  WARN 18184 --- [http-nio-8080-exec-2] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'GET' not supported]
+2022-06-19 15:54:44.699  INFO 18184 --- [http-nio-8080-exec-3] c.d.c.api.controller.BankController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@41014046
+2022-06-19 15:55:53.917  WARN 18184 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'POST' not supported]
+2022-06-19 15:56:11.060  INFO 18184 --- [http-nio-8080-exec-6] c.d.c.api.controller.BankController      : HTTP Request: org.apache.catalina.connector.RequestFacade@72f97406
+2022-06-19 15:56:18.669  INFO 18184 --- [http-nio-8080-exec-7] c.d.c.api.controller.BankController      : HTTP Request: org.apache.catalina.connector.RequestFacade@72f97406
+2022-06-19 15:57:03.817  WARN 18184 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.HttpRequestMethodNotSupportedException: Request method 'PUT' not supported]
+2022-06-19 15:57:08.216  INFO 18184 --- [http-nio-8080-exec-9] c.d.c.api.controller.BankController      : HTTP Request: org.apache.catalina.connector.RequestFacade@72f97406
+2022-06-19 15:57:13.433  INFO 18184 --- [http-nio-8080-exec-10] c.d.c.api.controller.BankController      : HTTP Request: org.apache.catalina.connector.RequestFacade@72f97406
+2022-06-19 16:33:34.548  INFO 7008 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 7008 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 16:33:34.565  INFO 7008 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 16:33:39.242  INFO 7008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 16:33:39.515  INFO 7008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 238 ms. Found 6 JPA repository interfaces.
+2022-06-19 16:33:41.676  INFO 7008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 16:33:41.709  INFO 7008 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 16:33:41.709  INFO 7008 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 16:33:42.041  INFO 7008 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 16:33:42.041  INFO 7008 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 7284 ms
+2022-06-19 16:33:42.539  INFO 7008 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 16:33:42.764  INFO 7008 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 16:33:43.540  INFO 7008 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 16:33:44.010  INFO 7008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 16:33:45.453  INFO 7008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 16:33:45.645  INFO 7008 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 16:33:52.416  INFO 7008 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 16:33:52.438  INFO 7008 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 16:33:55.677  WARN 7008 --- [main] ConfigServletWebServerApplicationContext : Exception encountered during context initialization - cancelling refresh attempt: org.springframework.beans.factory.UnsatisfiedDependencyException: Error creating bean with name 'transactionController': Unsatisfied dependency expressed through field 'transactionService'; nested exception is org.springframework.beans.factory.NoSuchBeanDefinitionException: No qualifying bean of type 'com.dv.cashlog.service.TransactionService' available: expected at least 1 bean which qualifies as autowire candidate. Dependency annotations: {@org.springframework.beans.factory.annotation.Autowired(required=true)}
+2022-06-19 16:33:55.697  INFO 7008 --- [main] j.LocalContainerEntityManagerFactoryBean : Closing JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 16:33:55.708  INFO 7008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown initiated...
+2022-06-19 16:33:55.791  INFO 7008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Shutdown completed.
+2022-06-19 16:33:55.798  INFO 7008 --- [main] o.apache.catalina.core.StandardService   : Stopping service [Tomcat]
+2022-06-19 16:33:55.829  INFO 7008 --- [main] ConditionEvaluationReportLoggingListener : 
+
+Error starting ApplicationContext. To display the conditions report re-run your application with 'debug' enabled.
+2022-06-19 16:33:55.893 ERROR 7008 --- [main] o.s.b.d.LoggingFailureAnalysisReporter   : 
+
+***************************
+APPLICATION FAILED TO START
+***************************
+
+Description:
+
+Field transactionService in com.dv.cashlog.api.controller.TransactionController required a bean of type 'com.dv.cashlog.service.TransactionService' that could not be found.
+
+The injection point has the following annotations:
+	- @org.springframework.beans.factory.annotation.Autowired(required=true)
+
+
+Action:
+
+Consider defining a bean of type 'com.dv.cashlog.service.TransactionService' in your configuration.
+
+2022-06-19 16:35:09.043  INFO 5192 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 5192 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 16:35:09.048  INFO 5192 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 16:35:11.571  INFO 5192 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 16:35:11.834  INFO 5192 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 227 ms. Found 6 JPA repository interfaces.
+2022-06-19 16:35:14.216  INFO 5192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 16:35:14.237  INFO 5192 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 16:35:14.237  INFO 5192 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 16:35:14.513  INFO 5192 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 16:35:14.513  INFO 5192 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 5399 ms
+2022-06-19 16:35:14.908  INFO 5192 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 16:35:15.054  INFO 5192 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 16:35:15.527  INFO 5192 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 16:35:15.756  INFO 5192 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 16:35:16.830  INFO 5192 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 16:35:16.920  INFO 5192 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 16:35:19.487  INFO 5192 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 16:35:19.502  INFO 5192 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 16:35:21.000  WARN 5192 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 16:35:23.976  INFO 5192 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 16:35:24.032  INFO 5192 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 15.558 seconds (JVM running for 16.069)
+2022-06-19 16:35:31.173  INFO 5192 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 16:35:31.175  INFO 5192 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 16:35:31.177  INFO 5192 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-19 16:35:51.101  INFO 5192 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@5d367013
+2022-06-19 16:38:51.428  INFO 11152 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 11152 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 16:38:51.436  INFO 11152 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 16:38:52.685  INFO 11152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 16:38:52.778  INFO 11152 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 86 ms. Found 6 JPA repository interfaces.
+2022-06-19 16:38:53.892  INFO 11152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 16:38:53.910  INFO 11152 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 16:38:53.912  INFO 11152 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 16:38:54.130  INFO 11152 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 16:38:54.132  INFO 11152 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2597 ms
+2022-06-19 16:38:54.407  INFO 11152 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 16:38:54.478  INFO 11152 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 16:38:54.682  INFO 11152 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 16:38:54.816  INFO 11152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 16:38:55.244  INFO 11152 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 16:38:55.285  INFO 11152 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 16:38:56.335  INFO 11152 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 16:38:56.350  INFO 11152 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 16:38:57.327  WARN 11152 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 16:38:59.491  INFO 11152 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 16:38:59.544  INFO 11152 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 8.742 seconds (JVM running for 9.199)
+2022-06-19 16:39:03.049  INFO 11152 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 16:39:03.050  INFO 11152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 16:39:03.053  INFO 11152 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 16:39:03.169  INFO 11152 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@7732e09
+2022-06-19 16:40:23.919  INFO 11152 --- [http-nio-8080-exec-3] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@7732e09
+2022-06-19 16:40:23.938 ERROR 11152 --- [http-nio-8080-exec-3] com.dv.cashlog.exception.AppHandler      : Colected and paid both can not != 0 concurently
+
+com.dv.cashlog.exception.AppException: Colected and paid both can not != 0 concurently
+	at com.dv.cashlog.service.impl.TransactionServiceImpl.createTransaction(TransactionServiceImpl.java:46) ~[classes/:na]
+	at com.dv.cashlog.api.controller.TransactionController.createTransaction(TransactionController.java:37) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 16:52:17.883  INFO 12516 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 12516 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 16:52:17.888  INFO 12516 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 16:52:18.938  INFO 12516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 16:52:19.034  INFO 12516 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 79 ms. Found 6 JPA repository interfaces.
+2022-06-19 16:52:20.091  INFO 12516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 16:52:20.120  INFO 12516 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 16:52:20.121  INFO 12516 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 16:52:20.365  INFO 12516 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 16:52:20.368  INFO 12516 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2408 ms
+2022-06-19 16:52:20.580  INFO 12516 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 16:52:20.732  INFO 12516 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 16:52:20.973  INFO 12516 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 16:52:21.126  INFO 12516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 16:52:21.599  INFO 12516 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 16:52:21.654  INFO 12516 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 16:52:22.915  INFO 12516 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 16:52:22.924  INFO 12516 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 16:52:23.775  WARN 12516 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 16:52:25.305  INFO 12516 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 16:52:25.326  INFO 12516 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 8.219 seconds (JVM running for 8.688)
+2022-06-19 16:52:28.094  INFO 12516 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 16:52:28.097  INFO 12516 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 16:52:28.099  INFO 12516 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-19 16:52:28.211  INFO 12516 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@3665ac1e
+2022-06-19 16:52:28.243 ERROR 12516 --- [http-nio-8080-exec-1] com.dv.cashlog.exception.AppHandler      : Colected and paid both can not != 0 concurently
+
+com.dv.cashlog.exception.AppException: Colected and paid both can not != 0 concurently
+	at com.dv.cashlog.service.impl.TransactionServiceImpl.createTransaction(TransactionServiceImpl.java:46) ~[classes/:na]
+	at com.dv.cashlog.api.controller.TransactionController.createTransaction(TransactionController.java:39) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 16:52:34.212  INFO 12516 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@3665ac1e
+2022-06-19 17:05:07.029  INFO 1504 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 1504 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 17:05:07.033  INFO 1504 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 17:05:08.694  INFO 1504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 17:05:08.938  INFO 1504 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 202 ms. Found 6 JPA repository interfaces.
+2022-06-19 17:05:12.549  INFO 1504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 17:05:12.598  INFO 1504 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 17:05:12.601  INFO 1504 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 17:05:13.259  INFO 1504 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 17:05:13.263  INFO 1504 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 6158 ms
+2022-06-19 17:05:13.886  INFO 1504 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 17:05:14.118  INFO 1504 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 17:05:14.767  INFO 1504 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 17:05:15.160  INFO 1504 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 17:05:16.986  INFO 1504 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 17:05:17.175  INFO 1504 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 17:05:20.069  INFO 1504 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 17:05:20.101  INFO 1504 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 17:05:28.617  WARN 1504 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 17:05:36.114  INFO 1504 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 17:05:36.209  INFO 1504 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 29.836 seconds (JVM running for 30.382)
+2022-06-19 17:05:39.003  INFO 1504 --- [http-nio-8080-exec-3] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 17:05:39.010  INFO 1504 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 17:05:39.015  INFO 1504 --- [http-nio-8080-exec-3] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 17:05:41.945  INFO 1504 --- [http-nio-8080-exec-7] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 1881 ms
+2022-06-19 17:09:30.169  INFO 1504 --- [http-nio-8080-exec-3] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:07.025  INFO 1504 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:15.516  INFO 1504 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:16.469  INFO 1504 --- [http-nio-8080-exec-5] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:17.237  INFO 1504 --- [http-nio-8080-exec-6] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:18.046  INFO 1504 --- [http-nio-8080-exec-10] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:18.685  INFO 1504 --- [http-nio-8080-exec-9] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:19.399  INFO 1504 --- [http-nio-8080-exec-7] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:20.083  INFO 1504 --- [http-nio-8080-exec-4] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:20.765  INFO 1504 --- [http-nio-8080-exec-8] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:21.498  INFO 1504 --- [http-nio-8080-exec-3] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:22.064  INFO 1504 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:22.899  INFO 1504 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:23.796  INFO 1504 --- [http-nio-8080-exec-5] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:10:25.560  INFO 1504 --- [http-nio-8080-exec-6] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 17:54:50.316  WARN 1504 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=29m32s862ms588탎400ns).
+2022-06-19 17:58:05.258  WARN 1504 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=3m14s942ms590탎500ns).
+2022-06-19 18:32:46.447  INFO 1504 --- [http-nio-8080-exec-9] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@63d290c5
+2022-06-19 18:32:47.358  WARN 1504 --- [HikariPool-1 housekeeper] com.zaxxer.hikari.pool.HikariPool        : HikariPool-1 - Thread starvation or clock leap detected (housekeeper delta=34m12s86ms217탎600ns).
+2022-06-19 18:33:11.706  INFO 6008 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 6008 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:33:11.719  INFO 6008 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:33:13.136  INFO 6008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:33:13.277  INFO 6008 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 128 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:33:14.499  INFO 6008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:33:14.514  INFO 6008 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:33:14.516  INFO 6008 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:33:14.716  INFO 6008 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:33:14.718  INFO 6008 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2877 ms
+2022-06-19 18:33:14.950  INFO 6008 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:33:15.059  INFO 6008 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:33:15.403  INFO 6008 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:33:15.573  INFO 6008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:33:16.179  INFO 6008 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:33:16.241  INFO 6008 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:33:17.799  INFO 6008 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:33:17.812  INFO 6008 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:33:19.131  WARN 6008 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:33:20.577  INFO 6008 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:33:20.606  INFO 6008 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 10.015 seconds (JVM running for 10.93)
+2022-06-19 18:33:26.730  INFO 6008 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 18:33:26.731  INFO 6008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 18:33:26.735  INFO 6008 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 18:33:26.878  INFO 6008 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@779d703a
+2022-06-19 18:34:29.777  INFO 6064 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 6064 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:34:29.786  INFO 6064 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:34:30.998  INFO 6064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:34:31.116  INFO 6064 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 93 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:34:32.107  INFO 6064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:34:32.134  INFO 6064 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:34:32.135  INFO 6064 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:34:32.280  INFO 6064 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:34:32.280  INFO 6064 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2409 ms
+2022-06-19 18:34:32.556  INFO 6064 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:34:32.652  INFO 6064 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:34:32.854  INFO 6064 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:34:32.980  INFO 6064 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:34:33.476  INFO 6064 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:34:33.517  INFO 6064 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:34:34.601  INFO 6064 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:34:34.612  INFO 6064 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:34:35.403  WARN 6064 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:34:36.583  INFO 6064 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:34:36.603  INFO 6064 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 7.574 seconds (JVM running for 8.092)
+2022-06-19 18:35:17.295  INFO 6064 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 18:35:17.295  INFO 6064 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 18:35:17.313  INFO 6064 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 18:35:17.515  WARN 6064 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dv.cashlog.api.response.TransactionResponse com.dv.cashlog.api.controller.TransactionController.createTransaction(com.dv.cashlog.api.request.TransactionRequest,javax.servlet.http.HttpServletRequest) with 2 errors: [Field error in object 'transactionRequest' on field 'collected': rejected value [0.0]; codes [Positive.transactionRequest.collected,Positive.collected,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.collected,collected]; arguments []; default message [collected]]; default message [must be greater than 0]] [Field error in object 'transactionRequest' on field 'paid': rejected value [-10000.0]; codes [Positive.transactionRequest.paid,Positive.paid,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.paid,paid]; arguments []; default message [paid]]; default message [must be greater than 0]] ]
+2022-06-19 18:36:16.792  INFO 6092 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 6092 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:36:16.796  INFO 6092 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:36:17.976  INFO 6092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:36:18.102  INFO 6092 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 113 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:36:19.444  INFO 6092 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:36:19.462  INFO 6092 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:36:19.465  INFO 6092 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:36:19.661  INFO 6092 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:36:19.666  INFO 6092 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2810 ms
+2022-06-19 18:36:19.965  INFO 6092 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:36:20.029  INFO 6092 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:36:20.221  INFO 6092 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:36:20.383  INFO 6092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:36:20.884  INFO 6092 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:36:20.931  INFO 6092 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:36:22.299  INFO 6092 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:36:22.311  INFO 6092 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:36:25.265  INFO 2728 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 2728 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:36:25.270  INFO 2728 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:36:26.541  INFO 2728 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:36:26.668  INFO 2728 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 114 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:36:35.464  INFO 12544 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 12544 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:36:35.474  INFO 12544 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:36:36.657  INFO 12544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:36:36.774  INFO 12544 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 104 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:36:38.218  INFO 12544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:36:38.232  INFO 12544 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:36:38.234  INFO 12544 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:36:38.426  INFO 12544 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:36:38.428  INFO 12544 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2894 ms
+2022-06-19 18:36:38.660  INFO 12544 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:36:38.733  INFO 12544 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:36:39.029  INFO 12544 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:36:39.154  INFO 12544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:36:39.825  INFO 12544 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:36:39.874  INFO 12544 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:36:41.166  INFO 12544 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:36:41.177  INFO 12544 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:36:42.596  WARN 12544 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:36:43.972  INFO 12544 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:36:43.986  INFO 12544 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 9.089 seconds (JVM running for 9.62)
+2022-06-19 18:37:08.511  INFO 12544 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 18:37:08.517  INFO 12544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 18:37:08.519  INFO 12544 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 1 ms
+2022-06-19 18:37:08.698  WARN 12544 --- [http-nio-8080-exec-1] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dv.cashlog.api.response.TransactionResponse com.dv.cashlog.api.controller.TransactionController.createTransaction(com.dv.cashlog.api.request.TransactionRequest,javax.servlet.http.HttpServletRequest) with 2 errors: [Field error in object 'transactionRequest' on field 'paid': rejected value [-10000.0]; codes [Positive.transactionRequest.paid,Positive.paid,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.paid,paid]; arguments []; default message [paid]]; default message [Only possitive]] [Field error in object 'transactionRequest' on field 'collected': rejected value [0.0]; codes [Positive.transactionRequest.collected,Positive.collected,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.collected,collected]; arguments []; default message [collected]]; default message [Only possitive]] ]
+2022-06-19 18:37:48.588  INFO 4520 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 4520 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:37:48.593  INFO 4520 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:37:49.713  INFO 4520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:37:49.827  INFO 4520 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 96 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:37:51.027  INFO 4520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:37:51.057  INFO 4520 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:37:51.061  INFO 4520 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:37:51.378  INFO 4520 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:37:51.380  INFO 4520 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2719 ms
+2022-06-19 18:37:51.680  INFO 4520 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:37:51.739  INFO 4520 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:37:51.954  INFO 4520 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:37:52.077  INFO 4520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:37:52.522  INFO 4520 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:37:52.554  INFO 4520 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:37:54.458  INFO 4520 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:37:54.466  INFO 4520 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:37:55.325  WARN 4520 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:37:56.937  INFO 4520 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:37:56.950  INFO 4520 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 8.98 seconds (JVM running for 9.549)
+2022-06-19 18:42:06.624  INFO 15548 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 15548 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:42:06.632  INFO 15548 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:42:07.691  INFO 15548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:42:07.842  INFO 15548 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 145 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:42:08.759  INFO 15548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:42:08.794  INFO 15548 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:42:08.796  INFO 15548 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:42:09.031  INFO 15548 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:42:09.036  INFO 15548 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2327 ms
+2022-06-19 18:42:09.477  INFO 15548 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:42:09.564  INFO 15548 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:42:09.779  INFO 15548 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:42:09.930  INFO 15548 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:42:10.530  INFO 15548 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:42:10.586  INFO 15548 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:42:12.590  INFO 15548 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:42:12.603  INFO 15548 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:42:13.343  WARN 15548 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:42:14.576  INFO 15548 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:42:14.592  INFO 15548 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 8.731 seconds (JVM running for 9.297)
+2022-06-19 18:42:37.133  INFO 15548 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 18:42:37.147  INFO 15548 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 18:42:37.149  INFO 15548 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 2 ms
+2022-06-19 18:42:38.155  INFO 15548 --- [http-nio-8080-exec-3] o.springdoc.api.AbstractOpenApiResource  : Init duration for springdoc-openapi is: 686 ms
+2022-06-19 18:43:25.529  INFO 15548 --- [http-nio-8080-exec-7] c.d.c.api.controller.RoleController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@581e81f8
+2022-06-19 18:43:50.727  INFO 15548 --- [http-nio-8080-exec-8] c.d.c.api.controller.MajorController     : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@1bbbc2ce
+2022-06-19 18:44:15.761  INFO 15548 --- [http-nio-8080-exec-9] c.d.c.api.controller.BankController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@53233c4f
+2022-06-19 18:44:55.277  INFO 15548 --- [http-nio-8080-exec-10] c.d.c.api.controller.UserController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@3954eb73
+2022-06-19 18:44:55.438 ERROR 15548 --- [http-nio-8080-exec-10] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/cashlog] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: source cannot be null] with root cause
+
+java.lang.IllegalArgumentException: source cannot be null
+	at org.modelmapper.internal.util.Assert.notNull(Assert.java:53) ~[modelmapper-3.0.0.jar:na]
+	at org.modelmapper.ModelMapper.map(ModelMapper.java:404) ~[modelmapper-3.0.0.jar:na]
+	at com.dv.cashlog.service.impl.UserServiceImpl.importFromExcel(UserServiceImpl.java:245) ~[classes/:na]
+	at com.dv.cashlog.api.controller.UserController.importFromExcel(UserController.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 18:45:20.432  INFO 15548 --- [http-nio-8080-exec-1] c.d.c.api.controller.UserController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@4f780822
+2022-06-19 18:45:20.544 ERROR 15548 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[.[.[dispatcherServlet]      : Servlet.service() for servlet [dispatcherServlet] in context with path [/cashlog] threw exception [Request processing failed; nested exception is java.lang.IllegalArgumentException: source cannot be null] with root cause
+
+java.lang.IllegalArgumentException: source cannot be null
+	at org.modelmapper.internal.util.Assert.notNull(Assert.java:53) ~[modelmapper-3.0.0.jar:na]
+	at org.modelmapper.ModelMapper.map(ModelMapper.java:404) ~[modelmapper-3.0.0.jar:na]
+	at com.dv.cashlog.service.impl.UserServiceImpl.importFromExcel(UserServiceImpl.java:245) ~[classes/:na]
+	at com.dv.cashlog.api.controller.UserController.importFromExcel(UserController.java:64) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 18:45:49.607  INFO 15548 --- [http-nio-8080-exec-2] c.d.c.api.controller.ClassController     : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@4bd0a891
+2022-06-19 18:45:57.591  INFO 15548 --- [http-nio-8080-exec-3] c.d.c.api.controller.UserController      : HTTP Request: org.springframework.web.multipart.support.StandardMultipartHttpServletRequest@21a5ae3a
+2022-06-19 18:47:29.074  WARN 15548 --- [http-nio-8080-exec-6] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dv.cashlog.api.response.TransactionResponse com.dv.cashlog.api.controller.TransactionController.createTransaction(com.dv.cashlog.api.request.TransactionRequest,javax.servlet.http.HttpServletRequest): [Field error in object 'transactionRequest' on field 'collected': rejected value [0.0]; codes [Positive.transactionRequest.collected,Positive.collected,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.collected,collected]; arguments []; default message [collected]]; default message [Only possitive]] ]
+2022-06-19 18:47:51.637  WARN 15548 --- [http-nio-8080-exec-5] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dv.cashlog.api.response.TransactionResponse com.dv.cashlog.api.controller.TransactionController.createTransaction(com.dv.cashlog.api.request.TransactionRequest,javax.servlet.http.HttpServletRequest): [Field error in object 'transactionRequest' on field 'collected': rejected value [0.0]; codes [Positive.transactionRequest.collected,Positive.collected,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.collected,collected]; arguments []; default message [collected]]; default message [Only possitive]] ]
+2022-06-19 18:48:18.798  INFO 15548 --- [http-nio-8080-exec-7] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@27359770
+2022-06-19 18:48:18.805 ERROR 15548 --- [http-nio-8080-exec-7] com.dv.cashlog.exception.AppHandler      : Colected and paid both can not != 0 concurently
+
+com.dv.cashlog.exception.AppException: Colected and paid both can not != 0 concurently
+	at com.dv.cashlog.service.impl.TransactionServiceImpl.createTransaction(TransactionServiceImpl.java:49) ~[classes/:na]
+	at com.dv.cashlog.api.controller.TransactionController.createTransaction(TransactionController.java:45) ~[classes/:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke0(Native Method) ~[na:na]
+	at java.base/jdk.internal.reflect.NativeMethodAccessorImpl.invoke(NativeMethodAccessorImpl.java:62) ~[na:na]
+	at java.base/jdk.internal.reflect.DelegatingMethodAccessorImpl.invoke(DelegatingMethodAccessorImpl.java:43) ~[na:na]
+	at java.base/java.lang.reflect.Method.invoke(Method.java:566) ~[na:na]
+	at org.springframework.web.method.support.InvocableHandlerMethod.doInvoke(InvocableHandlerMethod.java:205) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.method.support.InvocableHandlerMethod.invokeForRequest(InvocableHandlerMethod.java:150) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.ServletInvocableHandlerMethod.invokeAndHandle(ServletInvocableHandlerMethod.java:117) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.invokeHandlerMethod(RequestMappingHandlerAdapter.java:895) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.annotation.RequestMappingHandlerAdapter.handleInternal(RequestMappingHandlerAdapter.java:808) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.mvc.method.AbstractHandlerMethodAdapter.handle(AbstractHandlerMethodAdapter.java:87) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doDispatch(DispatcherServlet.java:1067) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.DispatcherServlet.doService(DispatcherServlet.java:963) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.processRequest(FrameworkServlet.java:1006) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at org.springframework.web.servlet.FrameworkServlet.doPost(FrameworkServlet.java:909) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:681) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.springframework.web.servlet.FrameworkServlet.service(FrameworkServlet.java:883) ~[spring-webmvc-5.3.20.jar:5.3.20]
+	at javax.servlet.http.HttpServlet.service(HttpServlet.java:764) ~[tomcat-embed-core-9.0.63.jar:4.0.FR]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:227) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.websocket.server.WsFilter.doFilter(WsFilter.java:53) ~[tomcat-embed-websocket-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.RequestContextFilter.doFilterInternal(RequestContextFilter.java:100) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.FormContentFilter.doFilterInternal(FormContentFilter.java:93) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.springframework.web.filter.CharacterEncodingFilter.doFilterInternal(CharacterEncodingFilter.java:201) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.springframework.web.filter.OncePerRequestFilter.doFilter(OncePerRequestFilter.java:117) ~[spring-web-5.3.20.jar:5.3.20]
+	at org.apache.catalina.core.ApplicationFilterChain.internalDoFilter(ApplicationFilterChain.java:189) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.ApplicationFilterChain.doFilter(ApplicationFilterChain.java:162) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardWrapperValve.invoke(StandardWrapperValve.java:197) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardContextValve.invoke(StandardContextValve.java:97) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.authenticator.AuthenticatorBase.invoke(AuthenticatorBase.java:541) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardHostValve.invoke(StandardHostValve.java:135) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.valves.ErrorReportValve.invoke(ErrorReportValve.java:92) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.core.StandardEngineValve.invoke(StandardEngineValve.java:78) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.catalina.connector.CoyoteAdapter.service(CoyoteAdapter.java:360) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.http11.Http11Processor.service(Http11Processor.java:399) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProcessorLight.process(AbstractProcessorLight.java:65) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.coyote.AbstractProtocol$ConnectionHandler.process(AbstractProtocol.java:890) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.NioEndpoint$SocketProcessor.doRun(NioEndpoint.java:1743) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.net.SocketProcessorBase.run(SocketProcessorBase.java:49) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor.runWorker(ThreadPoolExecutor.java:1191) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.ThreadPoolExecutor$Worker.run(ThreadPoolExecutor.java:659) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at org.apache.tomcat.util.threads.TaskThread$WrappingRunnable.run(TaskThread.java:61) ~[tomcat-embed-core-9.0.63.jar:9.0.63]
+	at java.base/java.lang.Thread.run(Thread.java:834) ~[na:na]
+
+2022-06-19 18:48:28.424  WARN 15548 --- [http-nio-8080-exec-8] .w.s.m.s.DefaultHandlerExceptionResolver : Resolved [org.springframework.web.bind.MethodArgumentNotValidException: Validation failed for argument [0] in public com.dv.cashlog.api.response.TransactionResponse com.dv.cashlog.api.controller.TransactionController.createTransaction(com.dv.cashlog.api.request.TransactionRequest,javax.servlet.http.HttpServletRequest): [Field error in object 'transactionRequest' on field 'collected': rejected value [0.0]; codes [Positive.transactionRequest.collected,Positive.collected,Positive.double,Positive]; arguments [org.springframework.context.support.DefaultMessageSourceResolvable: codes [transactionRequest.collected,collected]; arguments []; default message [collected]]; default message [Only possitive]] ]
+2022-06-19 18:49:48.252  INFO 1260 --- [main] com.dv.cashlog.CashlogApplication        : Starting CashlogApplication using Java 11.0.15 on SurfaceLaptop3 with PID 1260 (C:\workspace\springboot-cashlog\target\classes started by vutie in C:\workspace\springboot-cashlog)
+2022-06-19 18:49:48.258  INFO 1260 --- [main] com.dv.cashlog.CashlogApplication        : No active profile set, falling back to 1 default profile: "default"
+2022-06-19 18:49:49.546  INFO 1260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Bootstrapping Spring Data JPA repositories in DEFAULT mode.
+2022-06-19 18:49:49.644  INFO 1260 --- [main] .s.d.r.c.RepositoryConfigurationDelegate : Finished Spring Data repository scanning in 92 ms. Found 6 JPA repository interfaces.
+2022-06-19 18:49:50.729  INFO 1260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat initialized with port(s): 8080 (http)
+2022-06-19 18:49:50.758  INFO 1260 --- [main] o.apache.catalina.core.StandardService   : Starting service [Tomcat]
+2022-06-19 18:49:50.760  INFO 1260 --- [main] org.apache.catalina.core.StandardEngine  : Starting Servlet engine: [Apache Tomcat/9.0.63]
+2022-06-19 18:49:50.973  INFO 1260 --- [main] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring embedded WebApplicationContext
+2022-06-19 18:49:50.975  INFO 1260 --- [main] w.s.c.ServletWebServerApplicationContext : Root WebApplicationContext: initialization completed in 2637 ms
+2022-06-19 18:49:51.266  INFO 1260 --- [main] o.hibernate.jpa.internal.util.LogHelper  : HHH000204: Processing PersistenceUnitInfo [name: default]
+2022-06-19 18:49:51.390  INFO 1260 --- [main] org.hibernate.Version                    : HHH000412: Hibernate ORM core version 5.6.9.Final
+2022-06-19 18:49:51.677  INFO 1260 --- [main] o.hibernate.annotations.common.Version   : HCANN000001: Hibernate Commons Annotations {5.1.2.Final}
+2022-06-19 18:49:51.870  INFO 1260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Starting...
+2022-06-19 18:49:52.455  INFO 1260 --- [main] com.zaxxer.hikari.HikariDataSource       : HikariPool-1 - Start completed.
+2022-06-19 18:49:52.498  INFO 1260 --- [main] org.hibernate.dialect.Dialect            : HHH000400: Using dialect: org.hibernate.dialect.MySQL8Dialect
+2022-06-19 18:49:53.695  INFO 1260 --- [main] o.h.e.t.j.p.i.JtaPlatformInitiator       : HHH000490: Using JtaPlatform implementation: [org.hibernate.engine.transaction.jta.platform.internal.NoJtaPlatform]
+2022-06-19 18:49:53.705  INFO 1260 --- [main] j.LocalContainerEntityManagerFactoryBean : Initialized JPA EntityManagerFactory for persistence unit 'default'
+2022-06-19 18:49:54.512  WARN 1260 --- [main] JpaBaseConfiguration$JpaWebConfiguration : spring.jpa.open-in-view is enabled by default. Therefore, database queries may be performed during view rendering. Explicitly configure spring.jpa.open-in-view to disable this warning
+2022-06-19 18:49:55.654  INFO 1260 --- [main] o.s.b.w.embedded.tomcat.TomcatWebServer  : Tomcat started on port(s): 8080 (http) with context path '/cashlog'
+2022-06-19 18:49:55.668  INFO 1260 --- [main] com.dv.cashlog.CashlogApplication        : Started CashlogApplication in 8.079 seconds (JVM running for 8.609)
+2022-06-19 18:50:04.237  INFO 1260 --- [http-nio-8080-exec-1] o.a.c.c.C.[.[localhost].[/cashlog]       : Initializing Spring DispatcherServlet 'dispatcherServlet'
+2022-06-19 18:50:04.240  INFO 1260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Initializing Servlet 'dispatcherServlet'
+2022-06-19 18:50:04.244  INFO 1260 --- [http-nio-8080-exec-1] o.s.web.servlet.DispatcherServlet        : Completed initialization in 4 ms
+2022-06-19 18:50:04.616  INFO 1260 --- [http-nio-8080-exec-1] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
+2022-06-19 18:51:05.727  INFO 1260 --- [http-nio-8080-exec-2] c.d.c.a.c.TransactionController          : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
+2022-06-19 18:53:08.450  INFO 1260 --- [http-nio-8080-exec-4] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e
+2022-06-19 18:53:53.761  INFO 1260 --- [http-nio-8080-exec-5] c.d.c.api.controller.UserController      : HTTP Request: org.apache.catalina.connector.RequestFacade@49918e

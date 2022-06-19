@@ -4,7 +4,6 @@ import java.io.IOException;
 import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 import javax.servlet.http.HttpServletRequest;
 
@@ -119,10 +118,6 @@ public class UserServiceImpl implements UserService {
             Pageable pageableReq = PageRequest.of(page, limit);
             Page<UserEntity> userPage = userRepository.findAll(pageableReq);
             List<UserEntity> userRecords = userPage.getContent();
-
-            userRecords = userRecords.stream()
-                    .filter(r -> !r.getIsDeleted())
-                    .collect(Collectors.toList());
 
             if (userRecords.isEmpty()) {
                 throw new AppException(ErrorMessage.NO_RECORD_FOUND.getMessage(),

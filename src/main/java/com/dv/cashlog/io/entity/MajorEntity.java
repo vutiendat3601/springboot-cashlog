@@ -25,7 +25,7 @@ public class MajorEntity implements Serializable {
     private final static long serialVersionUID = 1l;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     private String name;
