@@ -20,7 +20,6 @@ import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.multipart.MultipartFile;
 
 import com.dv.cashlog.api.request.BankRequest;
-import com.dv.cashlog.api.request.RoleRequest;
 import com.dv.cashlog.api.response.BankResponse;
 import com.dv.cashlog.api.response.NotificationResponse;
 import com.dv.cashlog.common.dto.BankDto;

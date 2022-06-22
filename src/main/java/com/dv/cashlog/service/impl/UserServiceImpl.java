@@ -17,6 +17,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
+import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
@@ -40,6 +41,9 @@ public class UserServiceImpl implements UserService {
 
     @Autowired
     private ModelMapper modelMapper;
+
+    @Autowired
+    private BCryptPasswordEncoder bCryptPasswordEncoder;
 
     @Autowired
     private UserRepository userRepository;
@@ -66,12 +70,12 @@ public class UserServiceImpl implements UserService {
         }
 
         // Prepare data
-        modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
         RoleDto role = modelMapper.map(roleEntity, RoleDto.class);
         userReq.setRole(role);
         ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
         ClassDto clazz = modelMapper.map(classEntity, ClassDto.class);
         userReq.setClazz(clazz);
+        userReq.setEncryptedPassword(bCryptPasswordEncoder.encode(userReq.getPassword()));
         userReq.setCreatedDate(LocalDateTime.now());
         // userReq.setCreatedBy("Dat Vu");
         userReq.setUpdatedDate(LocalDateTime.now());
@@ -245,6 +249,8 @@ public class UserServiceImpl implements UserService {
                     ClassEntity classEntity = classRepository.findByName(userReq.getNameOfClass());
                     ClassDto clazz = modelMapper.map(classEntity, ClassDto.class);
                     userReq.setClazz(clazz);
+
+                    userReq.setEncryptedPassword(bCryptPasswordEncoder.encode(userReq.getPassword()));
 
                     userReq.setCreatedDate(LocalDateTime.now());
                     // roleReq.setCreatedBy("Dat Vu");

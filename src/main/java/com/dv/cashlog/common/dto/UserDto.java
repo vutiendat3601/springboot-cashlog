@@ -12,6 +12,7 @@ public class UserDto {
     private Long id;
     private String email;
     private String password;
+    private String encryptedPassword;
     private String phone;
     private String fullName;
     private LocalDate birthday;
